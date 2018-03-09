@@ -1,0 +1,58 @@
+[task]
+
+####
+# The name of the project. If not provided, this will default to
+# the name of the directory containing this file.
+####
+name: GDAC_selectBestcluster
+author:Hailei Zhang
+sync-composite-tasks: GDAC_pipelineConsensusClusteringPlus
+
+####
+# A list of directories, separated by colons, which includes all directories to
+# be included in this module. Directories should be relative to current
+# directory. The default is the current working directory
+####
+projectDirs: .:../../../scripts/choose_dotkit:../../../../R/RunR.sh
+
+####
+# Command line to be invoked to run this job
+#
+# To reference any files that are part of this module, prefix with <libdir>.
+####
+command: <libdir>choose_dotkit R-2.15 <libdir>RunR.sh -f main <libdir>select_best_cluster_chc.R ${text "-m" measure} ${file "-u" inputexp} ${text "-v" output} ${file "-w" clumembership} ${file "-p" inputallexp} ${file "-c" cophenetic}
+
+####
+# Task description
+####
+description: select best cluster
+
+####
+# Either 'firehose' or 'genepattern'.  Defaults to 'firehose'
+####
+installTarget: firehose
+
+[runtime]
+
+[cophenetic]
+description: The file where the cophenetic coeffecients can be loaded from.
+
+[measure]
+description: Correlation measure. Valid value is Pearson or Euclidean.
+
+[inputallexp]
+description: Matrix of normalized expression levels directly from the preprocessor with fixed sample names ("." replaced with "-").
+
+[output]
+description: Prefix for output files.
+
+[inputexp]
+description: Filename for the normalized expression matrix with the selected genes.
+
+[clumembership]
+description: Table of cluster memberships for different k. First column contains sample names with hyphens.
+
+####
+# This exposes the memory parameter in the task configuration.
+####
+[job.spec.memory]
