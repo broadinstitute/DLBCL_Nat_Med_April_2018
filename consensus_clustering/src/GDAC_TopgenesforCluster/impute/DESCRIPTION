@@ -9,4 +9,4 @@ Depends: R (>= 1.7.0)
 License: GPL-2
 biocViews: Bioinformatics, Microarray
 Packaged: 2009-10-28 08:01:53 UTC; biocbuild
-Built: R 2.13.1; x86_64-unknown-linux-gnu; 2016-09-17 23:25:35 UTC; unix
+Built: R 2.13.1; x86_64-unknown-linux-gnu; 2018-03-15 21:20:29 UTC; unix
