@@ -107,7 +107,7 @@ main <- function(...) {
 # Load the relevent libraries for the module.
 loader <- function() {
 	require(doMC)
-	#require(#jit)
+	require(jit)
 }
 
 #
@@ -157,7 +157,7 @@ consensusNMF <- function(input.ds, k.init, k.final, num.clusterings, maxniter, e
 		   	NMF.out <- NMF.div(V = A, k = k, maxniter = n.iter, seed = seed + i, stopconv = stopconv, stopfreq = stopfreq)
 			# Find the membership
 			members <- c()
-			#jit(1)
+			jit(1)
 			for (j in 1:cols) { 
 	    		members <- c(members, order(NMF.out$H[,j], decreasing = T)[1])
 			}
@@ -166,7 +166,7 @@ consensusNMF <- function(input.ds, k.init, k.final, num.clusterings, maxniter, e
 		assign <- matrix(assign, nrow = num.clusterings, byrow = TRUE)
 		# Compute consensus matrix
 	    connect.matrix <- matrix(0, nrow = cols, ncol = cols)
-	    #jit(1)
+	    jit(1)
 		for (i in 1:num.clusterings) {
 			for (j in 1:cols) {
    		     	for (p in 1:cols) {
@@ -187,7 +187,7 @@ consensusNMF <- function(input.ds, k.init, k.final, num.clusterings, maxniter, e
 	    k.vector[k.index] <- k
 	    rho[k.index] <- signif((cor(dist.matrix, dist.coph)), digits = 4)
 		# Order the matrix
-		#jit(1)
+		jit(1)
 	    for (i in 1:cols) {
 	    	for (j in 1:cols) {
         		connect.matrix.ordered[k.index, i, j] <- connect.matrix[HC$order[i], HC$order[j]]
@@ -253,24 +253,24 @@ NMF.div <- function(V, k, maxniter = 2000, seed = 123456, stopconv = 40, stopfre
 	old.membership <- vector(mode = "numeric", length = M)
     no.change.count <- 0
 	# Run until the max iterator or there has been convergence
-	#jit(1)
+	jit(1)
 	for (t in 1:maxniter) {
 		# Calculate the updated W and H		
         H <- H * (t(W) %*% (V / (W %*% H))) + .Machine$double.eps
         norm <- apply(W, MARGIN = 2, FUN = sum)
-		#jit(1)
+		jit(1)
         for (i in 1:k) {
         	H[i,] <- H[i,] / norm[i]
         }
         W <- W * ((V / (W %*% H)) %*% t(H)) + .Machine$double.eps
         norm <- apply(H, MARGIN = 1, FUN = sum)
-        #jit(1)
+        jit(1)
 		for (i in 1:k) {
         	W[,i] <- W[,i] / norm[i]
         }
         # Check to see if there has been convergence 
 		if (t %% stopfreq == 0) {
-        	#jit(1)
+        	jit(1)
 			for (j in 1:M) {
             	new.membership[j] <- order(H[,j], decreasing=T)[1]
             }

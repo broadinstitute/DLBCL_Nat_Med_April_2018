@@ -1,0 +1,6 @@
+install.packages('doMC',repos='http://R-Forge.R-project.org')
+install.packages('Cairo',repos='http://mirrors.sorengard.com/cran/')
+install.packages('gtools',repos='http://mirrors.sorengard.com/cran/')
+install.packages('gdata',repos='http://mirrors.sorengard.com/cran/')
+install.packages('caTools',repos='http://mirrors.sorengard.com/cran/')
+install.packages('gplots',repos='http://mirrors.sorengard.com/cran/')

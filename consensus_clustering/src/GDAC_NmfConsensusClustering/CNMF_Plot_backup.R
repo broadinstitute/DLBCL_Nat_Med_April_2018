@@ -4,7 +4,7 @@
 #  Purpose: This file is used by CNMF_GDAC.R to plot the results of the processing.
 options(warn = -1)
 
-
+library(jit)
 
 # Plots a heatmap plot of a consensus matrix
 #
@@ -13,7 +13,7 @@ CNMF.ConsPlot <- function(V, col.labels, col.names, main = " ", sub = " ", xlab=
      B <- matrix(0, nrow=cols, ncol=cols)
      max.val <- max(V)
      min.val <- min(V)
-	 #jit(1)
+	 jit(1)
      for (i in 1:cols) {
          for (j in 1:cols) {
         	k <- cols - i + 1
@@ -37,7 +37,7 @@ CNMF.ConsPlot <- function(V, col.labels, col.names, main = " ", sub = " ", xlab=
      D[1:cols, 1] <- ifelse(col.tag2 %% 2 == 0, 1.02, 1.01)
      D[(cols + 1), 1] <- 1.03
      D[1:cols, 2:(cols + 1)] <- B[1:cols, 1:cols]
-     col.map <- c(rainbow(100, s = 1.0, v = 0.75, start = 0.0, end = 0.75), "#BBBBBB", "#333333", "#FFFFFF")
+     col.map <- c(rainbow(100, s = 1.0, v = 0.75, start = 0.0, end = 0.75, gamma = 1.5), "#BBBBBB", "#333333", "#FFFFFF")
      image(1:(cols + 1), 1:(cols + 1), t(D), col = col.map, axes=FALSE, main=main, sub=sub, xlab= xlab, ylab=ylab)
      for (i in 1:cols) {
          col.names[i]  <- paste("      ", substr(col.names[i], 1, 12), sep="")
@@ -59,7 +59,7 @@ CNMF.matrix.abs.plot <- function(V, axes = F, log = F, norm = T, transpose = T, 
     	V <- log(V)
     }
     B <- matrix(0, nrow=rows, ncol=cols)
-	#jit(1)
+	jit(1)
     for (i in 1:rows) {
     	for (j in 1:cols) {
         	if (matrix.order == T) {
@@ -83,7 +83,7 @@ CNMF.matrix.abs.plot <- function(V, axes = F, log = F, norm = T, transpose = T, 
     	B <- t(B)
    	}
     if (norm == T) {
-    	image(z = B, zlim = c(min.val, max.val), axes = axes, col = rainbow(100, s = 1.0, v = 0.75, start = 0.0, end = 0.75), main = main, sub = sub, xlab = xlab, ylab = ylab)
+    	image(z = B, zlim = c(min.val, max.val), axes = axes, col = rainbow(100, s = 1.0, v = 0.75, start = 0.0, end = 0.75, gamma = 1.5), main = main, sub = sub, xlab = xlab, ylab = ylab)
   	} else {
     	image(z = B, axes = axes, col = rainbow(100, s = 1, v = 0.6, start = 0.1, end = 0.9, gamma = 1), main = main, sub = sub, xlab = xlab, ylab = ylab)
   	}
