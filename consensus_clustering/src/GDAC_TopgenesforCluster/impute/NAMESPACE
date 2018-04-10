@@ -1,3 +1,0 @@
-useDynLib(impute)
-
-export(impute.knn)

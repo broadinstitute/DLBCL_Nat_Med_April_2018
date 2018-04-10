@@ -1,2 +1,0 @@
-impute.knn              A function to impute missing expression data
-khanmiss                Khan microarray data with random missing values

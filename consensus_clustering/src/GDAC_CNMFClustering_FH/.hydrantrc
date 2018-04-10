@@ -1,3 +1,0 @@
-[firehose]
-task-configs: CopyNumber_Clustering_CNMF,CopyNumber_Clustering_CNMF_thresholded,Methylation_Clustering_CNMF,miR_Clustering_CNMF,miRseq_Clustering_CNMF,miRseq_Mature_Clustering_CNMF,mRNA_Clustering_CNMF,mRNAseq_Clustering_CNMF,RPPA_Clustering_CNMF
-workspaces: dev
