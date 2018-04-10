@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/CancerGenomeAnalysis/!svn/ver/72012/trunk/analysis_pipeline/genepattern/modules/GDAC_selectBestcluster
+END
+selecte_best_cluster_new_v1.R
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/CancerGenomeAnalysis/!svn/ver/55885/trunk/analysis_pipeline/genepattern/modules/GDAC_selectBestcluster/selecte_best_cluster_new_v1.R
+END
+hydrant.deploy
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/CancerGenomeAnalysis/!svn/ver/72012/trunk/analysis_pipeline/genepattern/modules/GDAC_selectBestcluster/hydrant.deploy
+END
+dcc_archive.properties
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/CancerGenomeAnalysis/!svn/ver/16630/trunk/analysis_pipeline/genepattern/modules/GDAC_selectBestcluster/dcc_archive.properties
+END
+select_best_cluster_chc.R
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/CancerGenomeAnalysis/!svn/ver/70364/trunk/analysis_pipeline/genepattern/modules/GDAC_selectBestcluster/select_best_cluster_chc.R
+END
+dcc_archive_manifest.tsv
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/CancerGenomeAnalysis/!svn/ver/16547/trunk/analysis_pipeline/genepattern/modules/GDAC_selectBestcluster/dcc_archive_manifest.tsv
+END

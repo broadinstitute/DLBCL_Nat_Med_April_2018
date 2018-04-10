@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/CancerGenomeAnalysis/!svn/ver/72048/trunk/analysis_pipeline/genepattern/modules/GDAC_CNMFClustering_FH
+END
+hydrant.deploy
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/CancerGenomeAnalysis/!svn/ver/71977/trunk/analysis_pipeline/genepattern/modules/GDAC_CNMFClustering_FH/hydrant.deploy
+END
+task.wdl
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/CancerGenomeAnalysis/!svn/ver/72048/trunk/analysis_pipeline/genepattern/modules/GDAC_CNMFClustering_FH/task.wdl
+END
+.hydrantrc
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/CancerGenomeAnalysis/!svn/ver/65549/trunk/analysis_pipeline/genepattern/modules/GDAC_CNMFClustering_FH/.hydrantrc
+END

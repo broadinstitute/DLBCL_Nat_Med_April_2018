@@ -1,0 +1,6 @@
+FileName	DataType	FileType
+*.png	MolecularSubtypes-Expression_mRNA	png
+*.bestclus.txt	MolecularSubtypes-Expression_mRNA	text
+*.allclusters.txt	MolecularSubtypes-Expression_mRNA	text
+*.subclassmarkers.txt	MolecularSubtypes-Expression_mRNA	text
+

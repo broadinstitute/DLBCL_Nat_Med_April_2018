@@ -1,0 +1,54 @@
+[task]
+
+####
+# The name of the project. If not provided, this will default to
+# the name of the directory containing this file.
+####
+name: GDAC_NmfConsensusClustering
+sync-composite-tasks: GDAC_CNMFClustering_FH
+author: Hailei Zhang, Robert Zupko
+
+####
+# A list of directories, separated by colons, which includes all directories to
+# be included in this module. Directories should be relative to current
+# directory. The default is the current working directory
+####
+projectDirs: .:../../../scripts/choose_dotkit:../../../../R/RunR.sh
+
+####
+# Command line to be invoked to run this job
+#
+# To reference any files that are part of this module, prefix with <libdir>.
+####
+command: <libdir>choose_dotkit R-2.13 <libdir>choose_dotkit GCC-4.3 <libdir>RunR.sh -f main <libdir>GDAC_CNMF.R -m${file expfile} -u${text k.int=2} -v${text k.final=8} -o${text outputprefix} -s<libdir>
+
+####
+# Task description
+####
+description: Non-negative Matrix Factorization (NMF) Consensus Clustering, http://www.broadinstitute.org/cgi-bin/cancer/publications/pub_paper.cgi?mode=view&paper_id=89
+
+####
+# Either 'firehose' or 'genepattern'.  Defaults to 'firehose'
+####
+installTarget: firehose
+
+sync-composite-tasks: GDAC_CNMFClustering_FH
+
+[runtime]
+
+[k.final]
+description: Final value of K
+
+[outputprefix]
+description: Prefix to append to all output files
+
+[expfile]
+description: Input dataset (gct or res)
+
+[k.int]
+description: Initial value of K (number.clustering)
+
+####
+# This exposes the memory parameter in the task configuration.
+####
+[job.spec.memory]

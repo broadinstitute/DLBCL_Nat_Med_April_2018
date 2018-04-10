@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/CancerGenomeAnalysis/!svn/ver/66083/trunk/analysis_pipeline/genepattern/modules/GDAC_TopgenesforCluster
+END
+hydrant.deploy
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/CancerGenomeAnalysis/!svn/ver/65576/trunk/analysis_pipeline/genepattern/modules/GDAC_TopgenesforCluster/hydrant.deploy
+END
+dcc_archive.properties
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/CancerGenomeAnalysis/!svn/ver/16643/trunk/analysis_pipeline/genepattern/modules/GDAC_TopgenesforCluster/dcc_archive.properties
+END
+impute_1.20.0.tar.gz
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/CancerGenomeAnalysis/!svn/ver/10028/trunk/analysis_pipeline/genepattern/modules/GDAC_TopgenesforCluster/impute_1.20.0.tar.gz
+END
+R.css
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/CancerGenomeAnalysis/!svn/ver/10028/trunk/analysis_pipeline/genepattern/modules/GDAC_TopgenesforCluster/R.css
+END
+Topgenes_v1.R
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/CancerGenomeAnalysis/!svn/ver/66083/trunk/analysis_pipeline/genepattern/modules/GDAC_TopgenesforCluster/Topgenes_v1.R
+END
+dcc_archive_manifest.tsv
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/CancerGenomeAnalysis/!svn/ver/36935/trunk/analysis_pipeline/genepattern/modules/GDAC_TopgenesforCluster/dcc_archive_manifest.tsv
+END

@@ -1,0 +1,4 @@
+FileName	DataType	FileType
+*.png	MolecularSubtypes-Expression_mRNA	png
+*.membership.txt	MolecularSubtypes-Expression_mRNA	text
+
