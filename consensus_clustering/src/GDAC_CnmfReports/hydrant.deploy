@@ -1,0 +1,83 @@
+[task]
+type = standard
+command = <R> <libdir>ReportGenerator.R main -h<nozzle.path> -o${file expdata} -v${file kclus} -s${file bestclu} -u${file,optional allcluster} -w${file markers} -a${file,optional file.gif.2} -b${file,optional file.gif.3} -c${file,optional file.gif.4} -d${file,optional file.gif.5} -e${file,optional file.gif.6} -f${file,optional file.gif.7} -g${file,optional file.gif.8} -j${file,optional file.gif.9} -k${file,optional file.gif.10} -q${file markersP} -r${file heatmap} -t${file heatmapall} -y<libdir> -z${text report}
+name = GDAC_CnmfReports
+author:Hailei Zhang
+project = None
+projectDirs = .
+build = None
+buildDir = .
+execDir = .
+installTarget = firehose
+description = 
+fileFormats = 
+
+[runtime]
+executor = LSF
+max_memory = 1
+fail_on_stderr = False
+
+[file.gif.8]
+description = 
+value = 
+
+[markersP]
+description = 
+value = 
+
+[heatmap]
+description = 
+value = 
+
+[allcluster]
+description = 
+value = 
+
+[file.gif.2]
+description = 
+value = 
+
+[file.gif.3]
+description = 
+value = 
+ 
+[heatmapall]
+description = 
+value = 
+
+[file.gif.6]
+description = 
+value = 
+
+[file.gif.7]
+description = 
+value = 
+
+[markers]
+description = 
+value = 
+
+[file.gif.5]
+description = 
+value = 
+
+[bestclu]
+description = 
+value = 
+
+[file.gif.4]
+description = 
+value = 
+
+[kclus]
+description = 
+value = 
+
+[report]
+description = The name of the report to be generated: mrna, mirna, or methylation
+value = 
+
+[expdata]
+description = 
+value = 
+
