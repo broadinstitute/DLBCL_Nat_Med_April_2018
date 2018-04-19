@@ -4,6 +4,5 @@ This repository contains instructions on how to pull and run a docker image cont
 
 "Genetic and Functional Drivers of Diffuse Large B Cell Lymphoma." Chapuy, B., Stewart C., Dunford A. et al.
 
-To run the module,
+To run the module, cd into the consensus_clustering directory and follow the commands in the README to build the docker image and run provided wrapper script.
 
-docker run  --mount type=bind,source=${PWD}/input_data,target=/Rscripts/input_data  --mount type=bind,source=${PWD}/output,target=/Rscripts/output  consensus_clustering Rscript run_consensus_clustering.R
