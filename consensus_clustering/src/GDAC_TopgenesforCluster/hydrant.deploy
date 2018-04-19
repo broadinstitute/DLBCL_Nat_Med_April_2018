@@ -1,0 +1,47 @@
+[task]
+
+####
+# The name of the project. If not provided, this will default to
+# the name of the directory containing this file.
+####
+name: GDAC_TopgenesforCluster
+
+####
+# A list of directories, separated by colons, which includes all directories to
+# be included in this module. Directories should be relative to current
+# directory. The default is the current working directory
+####
+projectDirs: .
+
+####
+# Command line to be invoked to run this job
+#
+# To reference any files that are part of this module, prefix with <libdir>.
+####
+command: <R> <libdir>Topgenes_v1.R main -s<libdir> -m${file expfile} -u${text,optional selectedgenes} -o${text outputprefix}
+
+####
+# Task description
+####
+description: This module can be used to select top genes with most variation, convert file to gct format, as well as impute missing value
+
+####
+# Either 'firehose' or 'genepattern'.  Defaults to 'firehose'
+####
+installTarget: firehose
+
+[runtime]
+
+[selectedgenes]
+description: ALL or fraction of genes to use when defined
+
+[expfile]
+description: Expression data to be clustered (.txt, .gct)
+
+[outputprefix]
+description: Prefix for output files
+
+####
+# This exposes the memory parameter in the task configuration.
+####
+[job.spec.memory]

@@ -1,0 +1,4 @@
+[task]
+name: GDAC_CNMFClustering_FH
+description: Non-negative Matrix Factorization (NMF) Consensus Clustering, http://www.broadinstitute.org/cgi-bin/cancer/publications/pub_paper.cgi?mode=view&paper_id=89
+author: Robert Zupko, Hailei Zhang
