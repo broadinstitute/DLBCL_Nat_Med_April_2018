@@ -14,7 +14,7 @@ Please cite both publications if referring to this work.
 To run the module, first CD into the 'consensus_clustering' directory and build the docker container using the Dockerfile there:
 
 cd consensus_clustering
-docker build . -t consensus_clustering
+docker build . -t dlbcl_consensus_clustering
 
 Then run the provided wrapper script in the docker container using the following command:
 
