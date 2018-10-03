@@ -7,18 +7,25 @@ import pandas as pd
 import matplotlib.pyplot as pl
 from scipy.stats.stats import pearsonr
 
-def main(seed, folds, original=True, COO=False, verbose=False, downSample = False, useSV = True, useCNA = True):
+def main(seed, folds, original=True, COO=False,
+         verbose=False, downSample = False, useSV = True,
+         useCNA = True, GD=False, useProbs=True,
+         fixedValidationSets=False, fullFeatures=False):
     trainFrames, validationFrames, trainLabels, validationLabels = gt.generateKFoldDFs(seed,
                                                                                        original,
                                                                                        folds,
                                                                                        COO,
                                                                                        downSample,
                                                                                        useSV,
-                                                                                       useCNA)
+                                                                                       useCNA,
+                                                                                       GD,
+                                                                                       useProbs=useProbs,
+                                                                                       fixedValidationSets=fixedValidationSets,
+                                                                                       fullFeatures=fullFeatures)
 
 
 
-    torch.manual_seed(seed)
+    #torch.manual_seed(seed)
 
     nets = []
     for k in range(0, folds):
@@ -38,10 +45,17 @@ def main(seed, folds, original=True, COO=False, verbose=False, downSample = Fals
     # lr = 0.01
     # num_epoch = 200
 
-    lr = 0.1
-    num_epoch = 30
+    if useProbs:
+        num_epoch = 30
+        lr = 0.1
+    else:
+        num_epoch = 100
+        lr = 0.01
 
-    MSE = True
+    if useProbs:
+        MSE = True
+    else:
+        MSE = False
 
     if MSE:
         criterion = nn.MSELoss()
@@ -60,7 +74,7 @@ def main(seed, folds, original=True, COO=False, verbose=False, downSample = Fals
         for i in range(0,len(trainValues[k])):
             if not MSE:
                 toAppend = torch.tensor([trainValues[k][i]], requires_grad=True).float()
-                toAppend2 = torch.tensor([int(trainLabels[k][i]-1)]).long()
+                toAppend2 = torch.tensor(trainLabels[k][i]).long()
             else:
                 toAppend = torch.tensor([trainValues[k][i]], requires_grad=True).float()
                 toAppend2 = torch.tensor([trainLabels[k][i]]).float()
@@ -89,9 +103,15 @@ def main(seed, folds, original=True, COO=False, verbose=False, downSample = Fals
                 avgloss += loss.item()
                 loss.backward()
                 optimizer.step()
-                currp = torch.max(Y, 1)[0].item()
+                if MSE:
+                    currp = torch.max(Y, 1)[0].item()
+                else:
+                    currp = Y.item()
                 #idx = torch.max(Y, 1)[1].item()
-                val = np.max(out.data[0].numpy())
+                if MSE:
+                    val = np.max(out.data[0].numpy())
+                else:
+                    val = np.argmax(out.data[0].numpy())
                 #val = val[idx]
                 currPreds.append(val)
                 currTruths.append(currp)

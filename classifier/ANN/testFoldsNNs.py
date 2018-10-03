@@ -6,22 +6,34 @@ import pandas as pd
 import pylab
 import torch
 import sys
+import os
+import glob
 
+print(sys.argv)
 useSV = sys.argv[1] == "True"
 useCNA = sys.argv[2] == "True"
+GD = sys.argv[3] == "True"
+useProbs = sys.argv[4] == "True"
+fixedValidationSets = sys.argv[5] == "True"
+fullFeatures = sys.argv[6] == "True"
 downSample = False
 
 def main(seed, folds):
     np.random.seed(seed)
-    if((len(sys.argv) != 3)):
-        print("provide two True/False arguments: first for useSV and second for useCNA")
+    if((len(sys.argv) != 7)):
+        print("provide five True/False arguments: first for useSV, second for useCNA, third for genome doubling, \n"
+              "fourth for probabilistic labels, fifth for fixed validation sets")
         exit()
     nets, validationFrames, validationLabels = trainNN_kfold.main(seed, folds,
                                                                   original=True,
                                                                   downSample=downSample,
                                                                   useSV=useSV,
-                                                                  useCNA=useCNA)
-
+                                                                  useCNA=useCNA,
+                                                                  GD = GD,
+                                                                  useProbs=useProbs,
+                                                                  fixedValidationSets=fixedValidationSets,
+                                                                  fullFeatures=fullFeatures)
+    print(validationFrames[1].shape)
     validationValues = []
     for k in range(0, folds):
         vals = validationFrames[k].values
@@ -51,7 +63,10 @@ def main(seed, folds):
     match = [[] for k in range(folds)]
     for k in range(0, folds):
         for i in range(0, len(validationLabels[k])):
-            idx = np.argmax(validationLabels[k][i])
+            if useProbs:
+                idx = np.argmax(validationLabels[k][i])
+            else:
+                idx = validationLabels[k][i][0]
             trueLabels[k].append(idx)
             if(idx == predictions[k][i]):
                 match[k].append(True)
@@ -64,6 +79,17 @@ def main(seed, folds):
         for idx in currFrame.index:
             sampleNames.append(idx)
 
+    files = glob.glob('LatestModels/*')
+    for f in files:
+        os.remove(f)
+    i = 0
+    nFeatures = validationFrames[1].shape[1]
+    for currnet in nets:
+        netName = "Net_seed"+str(seed)+"_Fold"+str(i)+"_nFeatures"+str(nFeatures)+".NN"
+        torch.save(currnet.state_dict(), "Models/" + netName)
+        torch.save(currnet.state_dict(), "LatestModels/" + netName)
+        i += 1
+
     return predictions, trueLabels, probabilities, match, sampleNames
 
 folds = 4
@@ -74,6 +100,7 @@ predictionsFlat = [item for sublist in predictions for item in sublist]
 trueLabelsFlat = [item for sublist in trueLabels for item in sublist]
 probabilitiesFlat = [item for sublist in probabilities for item in sublist]
 matchesFlat = [item for sublist in matches for item in sublist]
+
 
 #add 1 to fix cluster labels
 predictionsFlat = [i+1 for i in predictionsFlat]
@@ -87,17 +114,21 @@ df = pd.DataFrame({
 })
 df = df.sort_values(by='maxVal')
 df = df.reset_index(drop=True)
+filename = str(folds)+"foldNN"
 if(downSample):
-    filename = str(folds)+"foldNN_DS.csv"
-else:
-    if not useSV and not useCNA:
-        filename = str(folds) + "foldNN_noSV_noCNA.csv"
-    elif not useCNA:
-        filename = str(folds) + "foldNN_noCNA.csv"
-    elif not useSV:
-        filename = str(folds) + "foldNN_noSV.csv"
-    else:
-        filename = str(folds) + "foldNN.csv"
-df.to_csv("WrittenFiles/"+filename)
-df.to_csv("/Users/twood/RProjects/LymphomaClean/DataTables/"+filename)
+    filename = filename+"_DS"
+if not useSV:
+    filename = filename+"_noSV"
+if not useCNA:
+    filename = filename+"_noCNA"
+if GD:
+    filename = filename+"_GD"
+if not useProbs:
+    filename = filename+"_BinaryLabels"
+if fixedValidationSets:
+    filename = filename+"_FixedSets"
+if fullFeatures:
+    filename = filename+"_161F"
 
+filename = filename+".csv"
+df.to_csv("WrittenFiles/"+filename)

@@ -459,7 +459,8 @@ def generateFullDF(seed, useProbs = False):
     return trainFrame, validationFrame, appendTrainLabels, appendValidationLabels
 
 
-def generateKFoldDFs(seed, originalReduced, folds, COO, downSample, useSV, useCNA):
+def generateKFoldDFs(seed, originalReduced, folds, COO, downSample, useSV,
+                     useCNA, GD, useProbs, fixedValidationSets, fullFeatures):
     print(seed)
     print(os.getcwd())
     np.random.seed(seed)
@@ -470,6 +471,8 @@ def generateKFoldDFs(seed, originalReduced, folds, COO, downSample, useSV, useCN
             reducedDF = pd.read_csv("DataTables/reducedDF_noCNA.tsv", sep='\t')
         elif not useSV:
             reducedDF = pd.read_csv("DataTables/reducedDF_noSV.tsv", sep='\t')
+        elif GD:
+            reducedDF = pd.read_csv("DataTables/reducedDF_GD.txt", sep='\t')
         else:
             reducedDF = pd.read_csv("DataTables/reducedDF.txt", sep = '\t')
         if downSample:
@@ -480,9 +483,14 @@ def generateKFoldDFs(seed, originalReduced, folds, COO, downSample, useSV, useCN
         if not COO:
             reducedDF.drop(reducedDF.columns[len(reducedDF.columns) - 1], axis=1, inplace=True)
 
+    if fullFeatures:
+        reducedDF = pd.read_csv("DataTables/FullDF161.tsv", sep='\t')
+
+    print(reducedDF.shape)
     trainTest = pd.read_csv("DataTables/DLBCL_train_test_sets_01May2018.txt", sep = '\t')
     labels = pd.read_csv("DataTables/DLBCL_no_21q22.3.bestclus.txt", sep = '\t')
-    probs = pd.read_csv("DataTables/heatmapMatrixAlpha.0.9.Power1.2.constantScalar.txt", sep = '\t')
+    if useProbs:
+        probs = pd.read_csv("DataTables/heatmapMatrixAlpha.0.9.Power1.2.constantScalar.txt", sep = '\t')
 
 
     trainTest = trainTest[trainTest['pair_id'].isin(reducedDF.index)]
@@ -537,6 +545,20 @@ def generateKFoldDFs(seed, originalReduced, folds, COO, downSample, useSV, useCN
         idx = i % 4
         validationSets[idx].append(c5Samples[i])
 
+    #overwrite the validation frames if fixed frames. Not efficient. Not the philosophically correct way. Sorry.
+    #hard coded in 4 folds too.
+
+    if fixedValidationSets:
+
+        v1 = pd.read_csv("DataTables/validationSet.1.txt", sep='\t', header=None)
+        v2 = pd.read_csv("DataTables/validationSet.2.txt", sep='\t', header=None)
+        v3 = pd.read_csv("DataTables/validationSet.3.txt", sep='\t', header=None)
+        v4 = pd.read_csv("DataTables/validationSet.4.txt", sep='\t', header=None)
+
+        validationSets = [v1.iloc[:,0].values, v2.iloc[:,0].values,v3.iloc[:,0].values,v4.iloc[:,0].values]
+
+
+
     trainingSets = []
     for k in range(0, folds):
         currVal = validationSets[k]
@@ -558,19 +580,26 @@ def generateKFoldDFs(seed, originalReduced, folds, COO, downSample, useSV, useCN
         validationFrames.append(toAppend2)
         for i in range(0, len(trainingSets[k])):
             sampleName = trainingSets[k][i]
-            currProbs = probs.loc[probs['sample'] == sampleName, ['P1', 'P2', 'P3', 'P4', 'P5']]
-            appVal = list(currProbs.values[0])
+            if useProbs:
+                currProbs = probs.loc[probs['sample'] == sampleName, ['P1', 'P2', 'P3', 'P4', 'P5']]
+                appVal = list(currProbs.values[0])
+            else:
+                currLabel = labels.loc[labels['SampleName'] == sampleName, "cluster"]
+                appVal = list(currLabel-1)
             trainLabels[k].append(appVal)
         for i in range(0, len(validationSets[k])):
             sampleName = validationSets[k][i]
-            currProbs = probs.loc[probs['sample'] == sampleName, ['P1', 'P2', 'P3', 'P4', 'P5']]
-            appVal = list(currProbs.values[0])
+            if useProbs:
+                currProbs = probs.loc[probs['sample'] == sampleName, ['P1', 'P2', 'P3', 'P4', 'P5']]
+                appVal = list(currProbs.values[0])
+            else:
+                currLabel = labels.loc[labels['SampleName'] == sampleName, "cluster"]
+                appVal = list(currLabel - 1)
             validationLabels[k].append(appVal)
 
 
 
     return trainFrames, validationFrames, trainLabels, validationLabels
-
 
 #generateKFoldDFs(123, True, 4)
 #generateDFs(123, True)

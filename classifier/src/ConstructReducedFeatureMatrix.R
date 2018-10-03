@@ -4,7 +4,7 @@
 #the writeFiles variable inside of that block. Set both to true, and update the paths.
 #
 source("src/GeneratedReducedDF.R")
-source("src/GenerateFullDF2.R")
+source("src/GeneratefullDF2.R")
 fullDF = fullDF[rownames(fullDF) %in% rownames(reducedDF),]
 
 c2F = toupper(c("X17p.DEL", "X21q.AMP", "X9p21.3.DEL", "X9q21.13.DEL",
@@ -80,7 +80,11 @@ if(useCNA){
     TP53.biallelic = TP53.biallelic + fullDF$X17P.DEL
     Pi3k.Mod = Pi3k.Mod+fullDF$X10Q23.31.DEL
     
-    CNAsonlydf = data.frame(X21Q.AMP, Sum.CNAs.C2, sumCNAs.C5, X2P16.1.AMP, X9P21.3.DEL, X18Q.AMP, GENOME_DOUBLING)
+    if(GD){
+      CNAsonlydf = data.frame(X21Q.AMP, Sum.CNAs.C2, sumCNAs.C5, X2P16.1.AMP, X9P21.3.DEL, X18Q.AMP, GENOME_DOUBLING)
+    } else {
+      CNAsonlydf = data.frame(X21Q.AMP, Sum.CNAs.C2, sumCNAs.C5, X2P16.1.AMP, X9P21.3.DEL, X18Q.AMP)
+    }
 }
 
 combinedDF = data.frame(B2M.CD70.PD1.FAS.com, BCL2.comp, TP53.biallelic, Pi3k.Mod)

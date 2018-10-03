@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e75724fc-a6a8-4669-be6a-9aa1ea774162" name="Default Changelist" comment="" />
+    <list default="true" id="e75724fc-a6a8-4669-be6a-9aa1ea774162" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/DataTables/fullDF161.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataTables/reducedDF.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DataTables/reducedDF.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GenerateTestTrainSets.py" beforeDir="false" afterPath="$PROJECT_DIR$/GenerateTestTrainSets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrittenFiles/4foldNN.csv" beforeDir="false" afterPath="$PROJECT_DIR$/WrittenFiles/4foldNN.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrittenFiles/4foldNN_noCNA.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrittenFiles/4foldNN_noSV_noCNA.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testFoldsNNs.py" beforeDir="false" afterPath="$PROJECT_DIR$/testFoldsNNs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainNN_kfold.py" beforeDir="false" afterPath="$PROJECT_DIR$/trainNN_kfold.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataTables/currentFoldReducedTrain.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../DataTables/currentFoldReducedTrain.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataTables/currentFoldReducedValidation.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../DataTables/currentFoldReducedValidation.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataTables/fullDF161.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataTables/reducedDF.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Plots/AgreementvsConfidencek4NN._noCNAjpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../Plots/AgreementvsConfidencek4NN._noCNAjpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Plots/AgreementvsConfidencek4NN.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../Plots/AgreementvsConfidencek4NN.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Plots/AgreementvsConfidencek4NN_noSV_noCNA.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../Plots/AgreementvsConfidencek4NN_noSV_noCNA.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Plots/NMF_dist.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../Plots/NMF_dist.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Plots/NMF_noSV_noCNA_Dist.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../Plots/NMF_noSV_noCNA_Dist.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Plots/PerformancePlot.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../Plots/PerformancePlot.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WrittenFiles/NN_Dist.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../WrittenFiles/NN_Dist.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WrittenFiles/NN_noCNA_Dist.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../WrittenFiles/NN_noCNA_Dist.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WrittenFiles/NN_sortedSamples.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/../WrittenFiles/NN_sortedSamples.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WrittenFiles/NN_sortedSamples_noCNA.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/../WrittenFiles/NN_sortedSamples_noCNA.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WrittenFiles/RF_sortedSamples.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/../WrittenFiles/RF_sortedSamples.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WrittenFiles/pNMF_sortedSamples.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/../WrittenFiles/pNMF_sortedSamples.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/ConstructReducedFeatureMatrix.R" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ConstructReducedFeatureMatrix.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/EvalNMF.R" beforeDir="false" afterPath="$PROJECT_DIR$/../src/EvalNMF.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/EvalNMF_PMDist.R" beforeDir="false" afterPath="$PROJECT_DIR$/../src/EvalNMF_PMDist.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/EvalNN.R" beforeDir="false" afterPath="$PROJECT_DIR$/../src/EvalNN.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/EvalNN_PMDist.R" beforeDir="false" afterPath="$PROJECT_DIR$/../src/EvalNN_PMDist.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/EvalRF.R" beforeDir="false" afterPath="$PROJECT_DIR$/../src/EvalRF.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/EvalRF_PMDist.R" beforeDir="false" afterPath="$PROJECT_DIR$/../src/EvalRF_PMDist.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/LoadLibraries.R" beforeDir="false" afterPath="$PROJECT_DIR$/../src/LoadLibraries.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/PerformancesAll.R" beforeDir="false" afterPath="$PROJECT_DIR$/../src/PerformancesAll.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/get.classifier_Tim.R" beforeDir="false" afterPath="$PROJECT_DIR$/../src/get.classifier_Tim.R" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,24 +95,30 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="52" />
+          <entry key="Python Console" value="76" />
+          <entry key="py" value="3137" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="52" />
+          <entry key="Python" value="3213" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="tsv" value="1" />
-          <entry key="txt" value="3" />
+          <entry key="NN_TrashSet_Confidences" value="1" />
+          <entry key="csv" value="12" />
+          <entry key="py" value="2" />
+          <entry key="tsv" value="9" />
+          <entry key="txt" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="3" />
-          <entry key="TSV" value="1" />
+          <entry key="CSV" value="12" />
+          <entry key="PLAIN_TEXT" value="9" />
+          <entry key="Python" value="2" />
+          <entry key="TSV" value="9" />
         </counts>
       </usages-collector>
     </session>
@@ -86,7 +128,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
+            <state>
               <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
@@ -98,11 +140,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trainNN_kfold.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-248">
+              <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -110,10 +149,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testFoldsNNs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+            <state relative-caret-position="374">
+              <caret line="132" column="26" lean-forward="true" selection-start-line="132" selection-start-column="26" selection-end-line="132" selection-end-column="26" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/testTrashSet.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="26" column="39" lean-forward="true" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,20 +173,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GenerateTestTrainSets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="472" column="13" lean-forward="true" selection-start-line="472" selection-start-column="13" selection-end-line="472" selection-end-column="13" />
+            <state relative-caret-position="196">
+              <caret line="478" column="50" lean-forward="true" selection-start-line="478" selection-start-column="50" selection-end-line="478" selection-end-column="50" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DataTables/reducedDF.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -166,6 +208,9 @@
       <find>sampleNames</find>
       <find>criterion</find>
       <find>.sample(</find>
+      <find>-1</find>
+      <find>print(</find>
+      <find>GD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -188,6 +233,7 @@
         <option value="$PROJECT_DIR$/trainNN_kfold.py" />
         <option value="$PROJECT_DIR$/testFoldsNNs.py" />
         <option value="$PROJECT_DIR$/GenerateTestTrainSets.py" />
+        <option value="$PROJECT_DIR$/testTrashSet.py" />
       </list>
     </option>
   </component>
@@ -195,7 +241,7 @@
     <option name="x" value="38" />
     <option name="y" value="91" />
     <option name="width" value="1476" />
-    <option name="height" value="798" />
+    <option name="height" value="864" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -216,6 +262,21 @@
               <item name="ANN" type="462c0819:PsiDirectoryNode" />
               <item name="DataTables" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ANN" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ANN" type="462c0819:PsiDirectoryNode" />
+              <item name="LatestModels" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ANN" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ANN" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ANN" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ANN" type="462c0819:PsiDirectoryNode" />
+              <item name="WrittenFiles" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -227,10 +288,10 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/DataTables" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/DataTables" />
     </key>
   </component>
@@ -246,7 +307,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.testFoldsNNs">
+  <component name="RunManager" selected="Python.testTrashSet">
     <configuration name="CheckFullReducedAccuracy" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="LymphomaClean" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -268,27 +329,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="GenerateTestTrainSets" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="LymphomaClean" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GenerateTestTrainSets.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="testFoldsNNs" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="LymphomaClean" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -302,7 +342,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testFoldsNNs.py" />
-      <option name="PARAMETERS" value="True False" />
+      <option name="PARAMETERS" value="True True True True False False" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -323,6 +363,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testFoldsNNs_COO.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testTrashSet" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="LymphomaClean" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testTrashSet.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -354,18 +415,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.CheckFullReducedAccuracy" />
-      <item itemvalue="Python.GenerateTestTrainSets" />
       <item itemvalue="Python.trainNN_kfold" />
       <item itemvalue="Python.testFoldsNNs" />
       <item itemvalue="Python.testFoldsNNs_COO" />
+      <item itemvalue="Python.testTrashSet" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.testTrashSet" />
         <item itemvalue="Python.testFoldsNNs" />
-        <item itemvalue="Python.testFoldsNNs_COO" />
         <item itemvalue="Python.trainNN_kfold" />
+        <item itemvalue="Python.testFoldsNNs_COO" />
         <item itemvalue="Python.CheckFullReducedAccuracy" />
-        <item itemvalue="Python.GenerateTestTrainSets" />
       </list>
     </recent_temporary>
   </component>
@@ -383,23 +444,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="38" y="91" width="1476" height="798" extended-state="0" />
+    <frame x="38" y="91" width="1476" height="864" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27285224" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27285224" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32982457" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33569404" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.19546743" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33549222" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2992228" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32928064" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32748538" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32642487" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -426,6 +487,16 @@
           <line>10</line>
           <option name="timeStamp" value="71" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/testFoldsNNs.py</url>
+          <line>61</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/testFoldsNNs.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -433,52 +504,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DataTables/DLBCL.k5.connectivity.sample_cluster_confidence.1.000.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="4" selection-start-column="49" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataTables/DLBCL_train_test_sets_01May2018.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataTables/DLBCL_no_21q22.3.bestclus.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="2026" column="24" lean-forward="true" selection-start-line="2026" selection-start-column="24" selection-end-line="2026" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataTables/heatmapMatrixAlpha.0.9.Power1.constantScalar.txt" />
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/torch/nn/functional.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="1529" column="37" selection-start-line="1529" selection-start-column="37" selection-end-line="1529" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/predvals.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/pandas/core/indexes/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="630" selection-start-line="630" selection-end-line="630" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reducedminusCOO.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -545,9 +570,6 @@
     <entry file="file://$PROJECT_DIR$/fullN1s.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataTables/fullDF.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/reducedNoCOOFullSize.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -596,13 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CheckFullReducedAccuracy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="71">
@@ -634,29 +649,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WrittenFiles/4foldNN_noSV_noCNA.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="44" lean-forward="true" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state>
           <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trainNN_kfold.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -667,10 +665,97 @@
     <entry file="file://$PROJECT_DIR$/reducedNoCOOTraining.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/DataTables/reducedDF_noCNA.tsv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataTables/reducedDF_noGD.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="54" lean-forward="true" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataTables/reducedDF_noSV_noCNA.tsv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WrittenFiles/4foldNN_noCNA.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WrittenFiles/4foldNN_noSV_noCNA.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="44" lean-forward="true" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WrittenFiles/4foldNN_noGD.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WrittenFiles/4foldNN_noGD_BinaryLabels.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3000">
+          <caret line="200" column="49" lean-forward="true" selection-start-line="200" selection-start-column="49" selection-end-line="200" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WrittenFiles/4foldNN_BinaryLabels.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataTables/reducedDF_noSV.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="50" lean-forward="true" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WrittenFiles/4foldNN_FixedSets.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataTables/reducedDF.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="93" lean-forward="true" selection-start-line="6" selection-start-column="93" selection-end-line="6" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataTables/fullDF.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataTables/reducedDF_GD.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataTables/reducedDFTrash.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataTables/reducedDFTrash.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8401">
+          <caret line="11" column="46" lean-forward="true" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trainNN_kfold.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-248">
+          <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="311" lean-forward="true" selection-start-line="311" selection-end-line="311" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GenerateTestTrainSets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="472" column="13" lean-forward="true" selection-start-line="472" selection-start-column="13" selection-end-line="472" selection-end-column="13" />
+        <state relative-caret-position="196">
+          <caret line="478" column="50" lean-forward="true" selection-start-line="478" selection-start-column="50" selection-end-line="478" selection-end-column="50" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -679,21 +764,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testFoldsNNs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        <state relative-caret-position="374">
+          <caret line="132" column="26" lean-forward="true" selection-start-line="132" selection-start-column="26" selection-end-line="132" selection-end-column="26" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataTables/reducedDF_noCNA.tsv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataTables/reducedDF.txt">
+    <entry file="file://$PROJECT_DIR$/WrittenFiles/NN_TrashSet_Confidences">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+          <caret line="8" column="56" lean-forward="true" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testTrashSet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="26" column="39" lean-forward="true" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

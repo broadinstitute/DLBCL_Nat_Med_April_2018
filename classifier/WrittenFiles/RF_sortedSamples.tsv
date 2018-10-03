@@ -1,213 +1,213 @@
-"maxVal"	"cluster"	"correct"	"trueCluster"	"B2M.CD70.PD1.FAS.COM"	"BCL2.COMP"	"TP53.BIALLELIC"	"PI3K.MOD"	"BLC10.NOTCH2.A20.SPEN"	"CHROM.MOD.ENZYMES"	"HIST.COMP"	"NFKBALT.RASALT.JAK.STAT.ALT.RHOA.SGK1.KLH6.CD58.CD83"	"SUMC4.MUT"	"MYD88.L265"	"MYD88.OTHER"	"CD79B.MYD88.TBL1XR1.BLIMP.ETV6.ZC3H12A"	"SV.TP63"	"SV.BCL6"	"X21Q.AMP"	"SUM.CNAS.C2"	"SUMCNAS.C5"	"X2P16.1.AMP"	"X9P21.3.DEL"	"X18Q.AMP"	"GENOME_DOUBLING"
-"dlbcl_ricover_910"	0.3206	4	FALSE	1	0	0	0	0	0	0	2	0	2	0	0	0	0	0	0	1	0	0	0	0	0
-"dlbcl_ls2154"	0.3432	5	FALSE	1	0	0	0	0	0	0	0	2	2	0	0	0	0	0	0	0	0	0	0	0	0
-"dlbcl_c_d_1106_nullpair"	0.4236	1	TRUE	1	0	0	0	0	4	0	2	0	2	0	0	0	0	3	0	9	2	0	1	0	0
-"dlbcl_ricover_575"	0.4314	1	TRUE	1	4	0	0	2	2	0	2	0	4	0	0	0	0	0	0	3	1	0	0	0	0
-"dlbcl_ls3866"	0.4328	5	FALSE	1	0	0	0	0	2	0	2	2	4	0	0	0	0	0	0	1	0	0	0	0	0
-"dlbcl_c_d_1112_nullpair"	0.438	1	TRUE	1	2	0	0	0	0	2	0	2	2	0	0	0	3	0	1	3	2	0	0	0	0
-"dlbcl_ricover_181"	0.4948	1	TRUE	1	0	0	0	0	4	2	1	4	5	0	0	2	0	3	0	3	2	0	0	1	0
-"dlbcl_ls3809"	0.5044	1	TRUE	1	2	0	0	0	0	0	0	0	0	0	0	4	0	3	1	3	2	0	0	1	0
-"dlbcl_mc_f139_ad"	0.5164	5	FALSE	1	2	0	2	2	2	0	4	0	12	0	0	0	0	3	0	1	0	0	0	0	0
-"dlbcl_ls2367"	0.5344	1	TRUE	1	2	0	0	2	0	0	1	4	5	0	0	2	0	3	0	5	2	0	0	1	0
-"dlbcl_c_d_1154_nullpair"	0.5558	1	TRUE	1	2	0	0	0	0	0	0	0	0	0	0	0	3	0	0	4	1	0	0	0	0
-"dlbcl_ls2595"	0.5618	1	TRUE	1	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-"dlbcl_c_d_1132_nullpair"	0.562	1	TRUE	1	2	0	0	0	2	0	0	2	5	0	0	0	0	0	0	1	0	0	0	0	0
-"dlbcl_bwh_dlbcl64"	0.579	5	FALSE	1	0	0	0	0	0	2	6	4	10	0	0	0	0	3	0	8	0	2	0	0	0
-"dlbcl_ricover_473"	0.5796	4	FALSE	1	0	0	0	0	6	2	2	0	4	0	0	2	0	0	0	4	2	0	0	0	0
-"dlbcl_ricover_826"	0.5912	1	TRUE	1	2	0	1	2	2	0	2	2	8	0	0	2	0	3	0	5	1	0	0	0	0
-"dlbcl_c_d_1146_nullpair"	0.6024	3	FALSE	1	1	0	0	0	0	0	1	2	5	0	0	0	3	0	0	9	0	2	0	0	3
-"dlbcl_ls2978"	0.613	1	TRUE	1	4	0	2	0	0	0	4	0	4	0	2	2	3	3	0	6	0	2	0	0	0
-"dfcidl004_dt"	0.6268	1	TRUE	1	3	0	0	0	4	0	2	0	2	0	0	4	0	0	0	0	0	0	0	0	0
-"dlbcl_ricover_1150"	0.6536	1	TRUE	1	5	0	0	0	0	0	1	2	3	0	0	2	0	3	1	4	2	0	0	1	0
-"dlbcl_ricover_865"	0.664	1	TRUE	1	5	0	1	1	4	0	2	3	5	0	0	0	0	3	0	8	2	0	0	0	3
-"dlbcl_ricover_120"	0.672	1	TRUE	1	2	0	0	0	2	2	0	0	0	0	0	2	0	3	0	4	2	0	0	0	0
-"dlbcl_mc_f132_mlm"	0.6792	1	TRUE	1	0	0	0	0	4	0	2	2	4	0	2	4	0	3	0	1	0	0	0	0	0
-"dfcidl001_dt"	0.683	1	TRUE	1	5	0	0	2	2	0	2	2	4	0	0	0	0	3	0	7	0	2	0	0	0
-"dlbcl_ls1757"	0.6836	1	TRUE	1	4	0	1	0	2	2	0	4	4	0	2	2	3	3	0	7	0	0	0	0	0
-"dlbcl_mc_f648_jkw"	0.6876	1	TRUE	1	2	0	2	0	0	0	0	2	4	0	0	0	0	3	0	4	2	0	0	0	0
-"dlbcl_c_d_1155_nullpair"	0.7238	1	TRUE	1	2	0	0	0	0	0	0	0	0	0	0	0	0	3	0	3	0	2	0	0	0
-"dlbcl_ricover_1144"	0.7266	1	TRUE	1	2	0	0	0	2	0	2	2	6	2	2	4	0	3	0	1	0	0	0	0	0
-"dlbcl_ricover_829"	0.7514	1	TRUE	1	2	0	2	0	4	0	1	0	4	0	2	5	0	3	0	5	2	0	0	0	0
-"dlbcl_c_d_1114_nullpair"	0.7776	1	TRUE	1	2	0	0	0	0	0	4	0	4	0	2	2	0	3	0	2	0	0	0	0	0
-"dlbcl_ls378"	0.8544	1	TRUE	1	2	0	0	0	2	2	3	0	3	0	2	2	0	3	0	3	0	0	0	0	0
-"dlbcl_ricover_290"	0.8562	1	TRUE	1	4	0	0	0	3	1	2	0	2	0	2	2	0	3	0	2	1	1	0	0	0
-"dlbcl_c_d_1128_nullpair"	0.8876	1	TRUE	1	2	0	0	0	0	0	0	0	0	0	0	0	0	3	0	0	0	0	0	0	0
-"dlbcl_ricover_478"	0.9102	4	FALSE	1	0	0	0	0	2	0	0	0	0	0	2	2	0	0	0	6	4	0	0	1	0
-"dlbcl_mayo_dlbcl_5613"	0.9134	1	TRUE	1	2	0	0	0	2	0	0	2	2	0	0	0	0	3	0	3	2	0	0	0	0
-"dlbcl_ricover_694"	0.9146	1	TRUE	1	2	0	0	0	0	0	2	0	2	0	0	0	0	3	0	0	0	0	0	0	0
-"dfcidl010_dt"	0.9324	1	TRUE	1	4	0	0	0	2	0	2	2	4	0	0	0	0	3	0	2	0	0	0	0	0
-"dlbcl_c_d_1130_nullpair"	0.9512	1	TRUE	1	2	0	0	0	4	1	2	0	2	0	0	0	3	3	0	6	0	0	0	0	0
-"dlbcl_c_d_1123_nullpair"	0.9548	1	TRUE	1	5	0	0	0	4	0	2	0	4	0	0	0	0	3	0	6	1	0	0	0	0
-"dlbcl_mc_f927_jhs"	0.2988	4	FALSE	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0
-"dlbcl_ricover_978"	0.3388	1	FALSE	2	2	0	0	2	6	4	4	0	6	0	0	0	0	0	0	7	1	1	0	0	0
-"dlbcl_mayo_dlbcl_234"	0.347	5	FALSE	2	0	0	0	2	2	4	4	2	6	0	0	4	0	0	0	2	0	2	0	0	0
-"dlbcl_ls762"	0.3536	2	TRUE	2	0	0	0	0	0	2	0	2	2	0	0	0	0	0	0	0	2	0	0	1	0
-"dlbcl_ricover_197"	0.3866	5	FALSE	2	0	0	0	0	0	0	0	0	4	0	0	0	0	0	0	4	0	0	0	0	0
-"dlbcl_ls4619"	0.4342	2	TRUE	2	0	5	0	0	0	0	2	2	4	0	0	2	0	0	0	6	0	1	1	0	0
-"dlbcl_ls2305"	0.4396	2	TRUE	2	2	5	1	5	0	2	3	0	5	0	0	0	0	0	0	13	0	1	0	0	3
-"dlbcl_ricover_577"	0.4448	2	TRUE	2	0	0	0	3	2	6	2	0	2	0	0	0	0	0	0	3	4	0	0	2	0
-"dlbcl_ricover_216"	0.4458	4	FALSE	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0	1	0
-"dlbcl_ricover_1046"	0.446	2	TRUE	2	0	3	3	1	0	4	0	0	0	0	0	0	0	0	0	12	3	0	0	1	0
-"dlbcl_mc_f815_bat"	0.4514	2	TRUE	2	0	5	0	0	0	2	1	4	7	0	2	3	3	0	0	6	1	2	0	0	0
-"dlbcl_mc_f362_mjb1"	0.4682	2	TRUE	2	0	3	1	0	0	4	0	0	2	0	0	2	0	0	0	8	0	0	1	0	0
-"dlbcl_ricover_320"	0.4686	2	TRUE	2	0	0	0	2	0	0	0	0	0	0	0	0	0	0	1	3	0	0	0	0	0
-"dlbcl_ls2245"	0.4808	2	TRUE	2	2	5	1	0	0	4	0	4	4	0	0	0	0	3	0	11	1	1	0	0	0
-"dlbcl_ricover_208"	0.492	3	FALSE	2	0	4	3	1	0	0	0	2	2	0	0	0	0	0	0	13	0	0	1	0	0
-"dlbcl_mc_f344_cjs"	0.4922	2	TRUE	2	0	5	0	5	0	4	0	6	8	0	2	2	0	0	0	6	0	1	0	0	0
-"dlbcl_ricover_440"	0.5204	2	TRUE	2	0	5	2	3	0	2	0	2	2	0	0	0	0	0	0	15	1	1	1	0	0
-"dlbcl_c_d_1110_nullpair"	0.5346	2	TRUE	2	0	5	0	0	4	2	5	1	6	0	0	0	0	0	0	3	2	0	0	1	0
-"dlbcl_c_d_1141_nullpair"	0.5602	2	TRUE	2	0	5	0	2	2	4	0	0	0	0	0	0	0	0	2	6	3	2	0	2	0
-"dlbcl_ls2325"	0.5696	2	TRUE	2	0	5	0	2	2	0	2	0	2	0	0	0	0	0	0	10	2	0	0	1	0
-"dlbcl_ricover_384"	0.5726	2	TRUE	2	0	2	0	7	0	4	2	0	2	0	0	0	0	0	0	15	0	1	1	0	0
-"dlbcl_ls2599"	0.5892	2	TRUE	2	2	5	0	4	0	0	0	2	6	0	0	0	0	0	0	4	0	0	0	0	0
-"dlbcl_mc_f606_dmj"	0.5908	2	TRUE	2	0	5	1	1	0	2	0	0	0	0	0	0	0	0	1	8	0	0	1	0	0
-"dlbcl_c_d_1162_nullpair"	0.5936	2	TRUE	2	0	0	0	2	0	2	1	2	3	0	0	0	0	0	0	2	0	0	0	0	0
-"dlbcl_ls3615"	0.6234	2	TRUE	2	0	0	0	2	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0
-"dlbcl_ls4593"	0.6424	2	TRUE	2	0	3	0	1	0	2	4	0	4	0	0	0	0	0	0	7	0	0	0	0	0
-"dlbcl_ricover_111"	0.656	2	TRUE	2	0	0	0	2	2	2	0	0	0	0	0	1	0	0	0	3	2	1	0	1	0
-"dlbcl_ls155"	0.6642	5	FALSE	2	0	5	0	2	0	2	4	4	10	0	0	0	0	0	0	0	0	0	0	0	0
-"dfcidl009_dt"	0.6708	2	TRUE	2	0	1	0	2	0	2	0	0	0	0	0	0	0	0	1	6	1	1	0	0	0
-"dlbcl_ricover_269"	0.7034	2	TRUE	2	0	5	0	0	0	2	0	4	4	0	0	0	0	0	0	7	2	0	0	1	0
-"dlbcl_ls4616"	0.7698	2	TRUE	2	0	5	3	0	0	4	0	4	4	0	0	0	0	0	0	6	0	0	0	0	0
-"dlbcl_ricover_469"	0.7814	2	TRUE	2	2	5	0	2	2	4	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0
-"dlbcl_ls1098"	0.786	2	TRUE	2	2	4	0	2	0	4	2	2	4	0	0	0	0	0	0	2	1	0	0	0	0
-"dlbcl_ls1395"	0.7906	2	TRUE	2	0	4	3	0	0	4	0	2	2	0	0	0	0	0	0	6	0	0	0	0	0
-"dlbcl_ricover_463"	0.7922	2	TRUE	2	0	0	0	2	0	2	0	2	2	0	0	0	0	0	0	3	0	1	0	0	0
-"dlbcl_c_d_1113_nullpair"	0.796	2	TRUE	2	0	0	0	2	0	2	0	0	0	0	0	0	0	0	0	2	0	1	0	0	0
-"dlbcl_ls843"	0.812	2	TRUE	2	0	5	0	2	0	6	0	2	4	0	0	2	0	0	0	6	0	1	0	0	0
-"dlbcl_mc_f358_wds"	0.8674	2	TRUE	2	0	5	0	3	0	4	4	0	4	0	0	0	0	0	0	3	0	0	0	0	0
-"dlbcl_ls297"	0.8796	2	TRUE	2	0	5	0	3	0	4	2	2	6	0	0	0	0	0	0	4	1	0	0	0	0
-"dlbcl_ls1620"	0.9386	2	TRUE	2	0	5	0	5	0	6	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0
-"dlbcl_c_d_1127_nullpair"	0.9684	2	TRUE	2	0	5	0	3	0	4	0	0	0	0	0	0	0	0	0	4	0	0	0	0	0
-"dlbcl_ls4054"	0.3052	1	FALSE	3	0	0	0	0	0	0	0	2	2	0	0	0	0	0	0	3	0	0	1	0	0
-"dlbcl_c_d_1111_nullpair"	0.342	3	TRUE	3	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	0	0
-"dlbcl_mc_f210_gwc"	0.352	5	FALSE	3	0	0	0	0	0	0	2	2	4	0	0	0	0	0	0	7	1	1	0	1	0
-"dlbcl_c_d_1131_nullpair"	0.3814	4	FALSE	3	0	0	2	0	2	2	0	0	0	2	0	4	0	0	0	11	0	0	0	0	0
-"dlbcl_c_d_1118_nullpair"	0.3968	3	TRUE	3	0	0	0	0	0	0	0	0	2	0	0	1	0	3	0	11	0	2	1	0	0
-"dlbcl_ricover_1169"	0.4122	3	TRUE	3	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	2	0	1	0	0	0
-"dlbcl_ls3204"	0.413	3	TRUE	3	2	0	0	0	0	0	2	2	4	0	0	0	0	0	1	12	0	1	0	0	3
-"dlbcl_ricover_780"	0.4134	3	TRUE	3	0	2	3	2	0	2	2	2	4	0	0	0	0	0	0	14	3	2	0	0	0
-"dlbcl_c_d_1135_nullpair"	0.4172	3	TRUE	3	3	0	2	1	0	2	6	0	6	0	0	0	0	3	1	15	4	0	0	1	0
-"dlbcl_ricover_678"	0.4266	3	TRUE	3	3	0	3	0	2	0	0	0	0	0	0	0	0	0	0	4	3	0	0	2	0
-"dlbcl_ricover_1072"	0.4428	3	TRUE	3	0	0	0	0	0	0	2	4	8	0	2	2	0	0	0	19	1	1	1	0	0
-"dlbcl_ricover_822"	0.4548	4	FALSE	3	0	0	2	0	0	2	2	0	2	0	0	0	0	0	0	10	6	1	1	2	0
-"dlbcl_ricover_787"	0.5166	5	FALSE	3	0	0	0	2	2	0	0	6	6	0	0	0	0	0	0	9	0	0	0	0	0
-"dlbcl_ricover_1165"	0.5258	4	FALSE	3	0	0	3	0	0	2	0	0	0	0	2	2	0	0	0	6	2	0	0	0	0
-"dlbcl_ricover_623"	0.5308	3	TRUE	3	0	0	1	0	0	2	0	0	4	0	0	0	0	0	1	14	2	2	0	0	0
-"dlbcl_ls1921"	0.532	3	TRUE	3	0	3	1	2	0	0	2	4	8	0	0	0	0	0	1	20	0	2	0	0	0
-"dlbcl_ricover_1060"	0.5378	4	FALSE	3	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	4	3	0	0	1	0
-"dlbcl_dfci_dlbcl_goe07"	0.5386	3	TRUE	3	0	0	1	0	0	0	0	0	0	0	0	0	0	0	1	7	2	0	1	1	0
-"dlbcl_ls88"	0.539	3	TRUE	3	0	3	3	0	0	0	0	0	0	0	0	0	0	0	0	10	3	0	1	0	0
-"dlbcl_ricover_1210"	0.5398	3	TRUE	3	0	0	3	0	0	4	2	2	4	0	0	0	0	0	2	8	0	0	0	0	0
-"dlbcl_ls2258"	0.5602	3	TRUE	3	0	0	3	0	0	0	0	0	0	0	0	0	0	0	0	9	0	0	0	0	0
-"dlbcl_ls2328"	0.5642	2	FALSE	3	2	3	3	3	0	4	4	0	4	0	0	0	0	0	1	16	0	0	0	0	0
-"dlbcl_ls2089"	0.5692	3	TRUE	3	0	0	3	0	0	0	0	0	0	2	0	4	0	0	0	18	5	0	0	2	3
-"dlbcl_mc_f990_mna"	0.574	3	TRUE	3	0	0	1	0	1	0	0	2	2	2	0	6	0	0	0	23	3	1	1	0	3
-"dlbcl_ls1668"	0.5756	3	TRUE	3	0	5	3	1	2	2	6	2	12	0	0	0	0	0	0	21	3	2	1	1	3
-"dlbcl_mc_f959_erm"	0.576	3	TRUE	3	3	0	2	0	0	2	2	0	2	2	0	2	0	3	0	15	6	2	0	2	3
-"dlbcl_ricover_533"	0.6012	3	TRUE	3	0	0	0	2	0	0	0	6	6	0	0	0	0	0	1	21	2	1	0	1	3
-"dlbcl_ls3309"	0.6042	3	TRUE	3	0	5	3	3	0	4	0	0	0	0	0	0	0	0	0	23	2	1	0	0	3
-"dlbcl_dfci_dlbcl_goe05"	0.6152	4	FALSE	3	0	0	3	0	0	2	0	0	0	2	0	2	0	0	1	5	3	0	0	1	0
-"dlbcl_mc_f089_hcz"	0.6258	3	TRUE	3	0	2	2	0	0	2	0	4	4	0	0	2	0	0	1	16	1	0	1	0	0
-"dlbcl_ricover_299"	0.6542	3	TRUE	3	0	5	1	2	0	4	0	0	0	0	0	1	0	0	1	26	3	2	1	1	3
-"dlbcl_ricover_839"	0.6632	3	TRUE	3	0	0	3	0	0	0	0	2	2	0	0	0	0	0	1	8	0	0	1	0	0
-"dlbcl_ricover_335"	0.6824	3	TRUE	3	0	0	3	0	0	0	4	4	8	0	0	0	0	0	1	22	1	2	1	0	3
-"dlbcl_ricover_325"	0.7238	3	TRUE	3	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	7	1	1	1	0	0
-"dlbcl_c_d_1108_nullpair"	0.7286	3	TRUE	3	0	0	2	0	0	0	0	0	1	0	0	0	0	0	1	11	6	0	0	1	3
-"dlbcl_c_d_1152_nullpair"	0.7384	3	TRUE	3	0	0	1	3	0	0	0	2	2	0	0	2	0	0	0	20	1	1	1	0	3
-"dlbcl_ls3749"	0.7492	3	TRUE	3	0	0	0	1	0	0	2	0	4	0	0	0	0	0	1	22	2	2	1	0	3
-"dfcidl003_dt"	0.7504	3	TRUE	3	0	3	3	3	0	2	0	2	2	0	0	0	0	3	1	24	1	2	1	0	3
-"dlbcl_ricover_174"	0.7526	3	TRUE	3	2	0	3	1	2	0	0	0	0	0	0	0	0	0	1	21	1	0	0	0	3
-"dlbcl_mc_f729_man"	0.786	3	TRUE	3	0	0	2	0	0	1	1	0	1	0	0	0	0	0	0	7	1	0	1	0	0
-"dlbcl_mc_f739_ama3"	0.8236	3	TRUE	3	0	5	3	2	0	4	3	2	5	0	0	0	0	0	2	24	2	0	1	1	3
-"dlbcl_ricover_253"	0.8298	3	TRUE	3	0	0	3	0	0	2	0	0	0	0	0	0	0	3	0	27	1	1	1	0	3
-"dlbcl_ricover_126"	0.831	3	TRUE	3	0	5	3	2	0	2	0	0	0	0	0	0	0	0	2	20	1	2	1	0	3
-"dlbcl_ls146"	0.836	3	TRUE	3	0	0	3	1	2	0	0	2	2	0	0	0	0	0	1	21	5	2	0	1	3
-"dlbcl_ricover_1235"	0.8476	3	TRUE	3	0	5	3	1	2	3	0	0	2	0	0	0	0	0	2	21	1	2	0	1	3
-"dlbcl_mayo_dlbcl_7359"	0.854	3	TRUE	3	3	0	3	0	0	0	1	0	3	0	0	0	0	0	1	21	6	2	0	1	3
-"dlbcl_ricover_288"	0.9526	3	TRUE	3	0	0	2	0	0	0	2	0	3	0	0	0	0	0	1	19	1	2	1	0	3
-"dfcidl008_dt"	0.3676	3	FALSE	4	0	0	0	0	0	2	0	2	2	0	0	2	0	0	0	3	0	0	2	0	0
-"dlbcl_ls2208"	0.3708	2	FALSE	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	2	0	0	0	0
-"dlbcl_ricover_850"	0.3972	4	TRUE	4	0	0	0	0	0	0	0	0	2	0	2	6	0	0	1	7	2	1	0	0	0
-"dlbcl_ricover_1278"	0.4014	4	TRUE	4	0	1	2	0	0	0	7	0	10	0	2	3	0	0	0	1	3	0	0	1	0
-"dlbcl_ricover_506"	0.4048	4	TRUE	4	0	0	0	1	0	0	0	0	0	0	0	2	0	0	0	11	5	1	1	1	0
-"dlbcl_ricover_1204"	0.4154	4	TRUE	4	0	0	0	1	0	2	8	0	10	0	0	6	0	0	0	5	3	0	1	2	0
-"dlbcl_ricover_1190"	0.4242	4	TRUE	4	0	0	0	0	0	2	0	0	0	0	0	0	0	3	0	2	4	0	0	1	0
-"dlbcl_c_d_1163_nullpair"	0.4256	4	TRUE	4	0	0	0	0	0	0	2	2	6	2	0	8	0	0	0	0	2	0	0	0	0
-"dlbcl_c_d_1105_nullpair"	0.4262	1	FALSE	4	0	0	1	0	4	2	1	0	1	0	0	2	0	0	0	4	2	0	0	0	0
-"dlbcl_ricover_173"	0.519	4	TRUE	4	0	0	0	0	0	0	2	0	2	2	0	6	0	0	0	0	0	0	0	0	0
-"dlbcl_ricover_431"	0.522	4	TRUE	4	0	0	0	0	0	0	2	2	8	2	0	4	0	0	0	6	3	0	0	0	0
-"dlbcl_ls1304"	0.525	4	TRUE	4	0	3	0	0	0	0	0	0	0	0	0	4	0	0	0	0	2	0	0	0	0
-"dlbcl_ricover_1032"	0.526	4	TRUE	4	0	0	3	0	0	0	2	2	4	2	0	6	0	0	0	11	4	0	0	0	0
-"dlbcl_c_d_1140_nullpair"	0.5472	4	TRUE	4	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0
-"dlbcl_ricover_105"	0.5576	4	TRUE	4	0	0	1	0	2	0	0	0	0	0	0	0	0	0	0	4	3	0	1	1	0
-"dlbcl_ricover_585"	0.5582	4	TRUE	4	3	0	0	0	0	0	0	2	3	2	0	6	0	3	0	5	7	0	1	1	0
-"dlbcl_ricover_1106"	0.5704	4	TRUE	4	0	0	0	0	0	0	4	0	8	2	0	6	0	0	0	5	8	0	0	2	0
-"dlbcl_ricover_1287"	0.5726	4	TRUE	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	3	0	0	1	0
-"dlbcl_ricover_763"	0.579	4	TRUE	4	0	0	1	0	0	0	0	2	2	0	0	2	0	0	0	9	4	0	0	1	0
-"dlbcl_ricover_467"	0.5804	3	FALSE	4	3	0	3	0	0	2	0	0	0	0	0	6	3	0	0	12	8	0	0	2	3
-"dlbcl_ricover_99"	0.589	4	TRUE	4	0	0	0	0	2	0	0	0	0	0	2	4	0	0	0	1	4	0	0	1	0
-"dlbcl_mc_f089_mlb"	0.5978	4	TRUE	4	0	0	0	0	0	0	2	0	2	0	0	0	0	0	0	1	4	0	0	0	0
-"dlbcl_ricover_704"	0.6068	4	TRUE	4	2	0	0	0	0	0	0	0	0	0	0	2	0	0	0	1	5	0	0	0	0
-"dlbcl_c_d_1120_nullpair"	0.6218	4	TRUE	4	0	0	0	0	0	2	0	0	0	0	0	2	0	0	0	3	2	0	0	1	0
-"dlbcl_ricover_583"	0.6354	4	TRUE	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	4	5	0	0	1	0
-"dlbcl_ls1683"	0.6438	4	TRUE	4	0	0	2	0	0	2	0	2	2	0	0	2	0	0	0	6	6	1	0	2	0
-"dlbcl_ls148"	0.6534	4	TRUE	4	0	0	0	0	0	0	0	2	2	0	0	3	0	0	0	2	2	0	0	2	0
-"dlbcl_ricover_224"	0.6714	4	TRUE	4	0	0	0	2	0	0	0	0	0	0	0	4	0	0	0	3	4	0	0	0	0
-"dlbcl_mc_f339_jps2"	0.6798	4	TRUE	4	5	0	0	0	0	0	1	0	1	0	0	4	0	0	0	2	4	0	0	1	0
-"dlbcl_c_d_1104_nullpair"	0.6812	4	TRUE	4	0	0	3	0	0	0	0	0	0	2	0	4	0	0	0	4	3	0	0	1	0
-"dlbcl_ricover_543"	0.6846	4	TRUE	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	5	0	0	1	0
-"dlbcl_ricover_215"	0.6968	4	TRUE	4	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	1	1	0	0	0	0
-"dlbcl_c_d_1144_nullpair"	0.7212	4	TRUE	4	0	0	2	0	0	0	1	2	3	0	0	4	0	0	0	1	3	0	0	1	0
-"dlbcl_mc_f519_alt"	0.7444	4	TRUE	4	0	0	0	0	2	0	0	0	0	0	0	2	0	0	0	1	5	0	1	1	0
-"dlbcl_c_d_1142_nullpair"	0.7554	4	TRUE	4	0	0	1	0	0	0	0	2	2	0	0	0	0	0	0	3	6	0	0	2	0
-"dlbcl_ricover_1248"	0.7674	4	TRUE	4	0	0	0	0	2	0	0	2	2	2	0	4	0	3	0	6	9	0	0	2	0
-"dlbcl_c_d_1166_nullpair"	0.769	4	TRUE	4	0	0	3	0	0	2	0	0	0	0	0	4	0	0	0	4	9	0	0	2	0
-"dlbcl_ricover_685"	0.783	4	TRUE	4	0	0	0	0	0	0	0	0	2	2	0	8	0	0	0	6	1	0	0	0	0
-"dlbcl_ricover_1257"	0.8096	4	TRUE	4	0	0	0	0	0	0	2	0	2	0	0	2	0	0	0	2	5	0	1	2	0
-"dlbcl_ricover_773"	0.8138	4	TRUE	4	0	0	0	0	0	4	0	0	0	2	0	4	0	0	0	4	3	0	0	1	0
-"dlbcl_ls4085"	0.8176	4	TRUE	4	0	0	0	0	0	2	0	0	1	0	0	2	0	0	0	4	4	0	0	1	0
-"dlbcl_ricover_720"	0.8542	4	TRUE	4	0	0	0	0	0	0	0	0	0	2	0	6	0	3	0	6	6	0	0	1	0
-"dlbcl_ricover_712"	0.904	4	TRUE	4	0	0	0	0	0	0	2	0	2	0	0	2	0	0	0	2	5	0	0	1	0
-"dlbcl_ricover_1293"	0.911	4	TRUE	4	0	0	0	0	0	0	0	0	2	2	0	8	0	0	0	3	2	0	0	1	0
-"dlbcl_ricover_134"	0.913	4	TRUE	4	0	0	1	0	0	2	0	2	2	2	0	4	0	0	0	5	8	0	0	2	0
-"dlbcl_ricover_417"	0.9422	4	TRUE	4	0	0	0	0	0	0	0	0	0	2	0	6	3	0	0	4	3	0	0	1	0
-"dlbcl_c_d_1125_nullpair"	0.9904	4	TRUE	4	0	1	0	0	0	0	0	0	2	2	0	6	0	0	0	3	6	0	0	1	0
-"dlbcl_ls951"	0.3502	5	TRUE	5	2	0	0	1	0	0	0	6	6	0	0	0	0	0	1	5	0	1	0	0	0
-"dlbcl_ricover_1081"	0.3534	5	TRUE	5	2	0	0	1	2	4	1	2	7	0	0	2	0	0	0	3	0	0	0	0	0
-"dlbcl_ls2264"	0.3786	2	FALSE	5	0	3	0	0	0	0	4	2	6	0	0	2	0	0	0	0	2	0	0	1	0
-"dlbcl_ricover_1299"	0.416	4	FALSE	5	0	0	0	0	0	0	2	2	8	0	0	2	0	0	0	3	2	0	0	1	0
-"dlbcl_c_d_1138_nullpair"	0.4352	4	FALSE	5	0	0	0	4	0	0	4	0	4	0	0	0	0	0	0	3	4	0	0	1	0
-"dlbcl_ricover_711"	0.4672	5	TRUE	5	0	0	1	0	0	0	6	2	10	0	0	0	0	3	0	11	0	2	0	0	0
-"dlbcl_ricover_342"	0.4854	2	FALSE	5	0	0	0	2	0	0	0	2	4	0	0	0	0	0	0	1	0	0	0	0	0
-"dlbcl_ricover_102"	0.5014	5	TRUE	5	0	0	0	0	0	0	0	2	4	0	0	0	0	0	0	0	0	0	0	0	0
-"dlbcl_ricover_408"	0.5094	3	FALSE	5	0	0	0	2	0	0	0	2	4	0	0	0	0	0	2	7	2	2	0	0	0
-"dlbcl_c_d_1148_nullpair"	0.5112	5	TRUE	5	5	0	0	4	0	0	2	9	12	0	0	0	0	3	0	4	0	2	0	0	0
-"dlbcl_ricover_274"	0.5184	5	TRUE	5	0	0	2	0	0	0	10	2	14	2	0	2	0	0	0	6	0	0	0	0	0
-"dlbcl_ricover_151"	0.5198	5	TRUE	5	0	0	3	2	0	0	4	2	11	0	0	0	0	0	1	9	1	1	0	0	0
-"dlbcl_c_d_1151_nullpair"	0.5202	5	TRUE	5	2	0	3	4	0	0	3	8	13	0	0	1	0	3	1	3	0	0	0	0	0
-"dlbcl_mayo_dlbcl_3653"	0.54	4	FALSE	5	0	0	0	0	0	0	0	3	3	0	0	2	0	0	0	1	0	0	0	0	0
-"dlbcl_ricover_1018"	0.565	3	FALSE	5	0	0	1	1	0	0	5	6	13	0	0	0	0	0	0	18	3	1	0	0	3
-"dlbcl_ricover_597"	0.5836	4	FALSE	5	0	0	1	0	0	0	8	2	12	2	0	6	0	0	0	4	2	0	0	1	0
-"dlbcl_ls2590"	0.6158	5	TRUE	5	0	0	0	0	0	2	3	4	11	0	0	0	0	0	0	2	1	0	0	0	0
-"dlbcl_ricover_1045"	0.6268	5	TRUE	5	2	0	0	0	0	0	2	6	10	0	2	2	0	0	0	2	2	0	0	0	0
-"dlbcl_ricover_866"	0.6516	2	FALSE	5	0	5	0	8	0	6	6	8	20	0	0	0	0	0	0	10	0	2	0	0	0
-"dlbcl_ls1899"	0.664	5	TRUE	5	0	0	0	0	0	0	1	2	7	0	0	0	0	0	0	2	0	0	0	0	0
-"dlbcl_mc_f139_ljf"	0.6694	5	TRUE	5	2	0	0	0	0	2	4	14	23	0	0	2	0	0	1	6	0	1	0	0	0
-"dlbcl_ls3387"	0.685	2	FALSE	5	2	5	0	4	1	2	10	4	16	0	0	0	0	0	0	2	0	0	0	0	0
-"dlbcl_c_d_1153_nullpair"	0.6934	5	TRUE	5	0	0	0	0	0	0	8	2	10	0	0	0	0	0	0	7	2	0	0	1	0
-"dlbcl_ricover_617"	0.6996	5	TRUE	5	2	0	0	2	2	0	4	2	10	0	0	0	0	0	1	5	0	2	0	0	0
-"dlbcl_ricover_692"	0.7102	5	TRUE	5	2	0	0	2	2	0	7	4	17	0	0	2	0	0	0	6	1	2	0	0	0
-"dlbcl_ls3808"	0.7658	5	TRUE	5	0	0	0	0	0	0	0	4	4	0	0	0	0	0	0	0	0	0	0	0	0
-"dlbcl_ricover_148"	0.7988	5	TRUE	5	0	0	1	0	0	0	0	6	8	0	0	0	0	0	0	5	0	0	0	0	0
-"dlbcl_ls3499"	0.8006	5	TRUE	5	2	0	0	0	0	0	5	2	7	0	0	0	0	0	0	3	0	2	0	0	0
-"dlbcl_ricover_950"	0.8068	5	TRUE	5	0	0	0	2	0	0	3	4	9	0	0	0	0	0	0	0	0	0	0	0	0
-"dlbcl_ricover_338"	0.808	5	TRUE	5	2	0	0	0	0	0	0	4	8	0	0	0	0	0	0	1	0	0	0	0	0
-"dlbcl_ricover_985"	0.8116	5	TRUE	5	0	0	0	0	0	0	0	8	11	0	0	0	0	0	0	5	0	1	0	0	0
-"dlbcl_dfci_dlbcl_goe08"	0.8186	5	TRUE	5	4	0	0	0	2	0	4	4	10	0	0	0	0	0	0	1	0	0	0	0	0
-"dlbcl_c_d_1109_nullpair"	0.8396	5	TRUE	5	4	0	0	0	0	0	5	2	8	0	0	0	0	0	0	1	0	1	0	0	0
-"dlbcl_ricover_1138"	0.8898	5	TRUE	5	4	0	0	0	2	0	4	12	17	0	0	0	0	0	0	2	0	0	0	0	0
-"dlbcl_ricover_361"	0.9066	5	TRUE	5	0	0	0	0	0	0	0	6	8	0	0	0	0	0	0	0	0	0	0	0	0
-"dlbcl_ricover_1247"	0.9142	5	TRUE	5	0	0	0	0	0	0	3	4	9	0	0	2	0	0	0	0	0	0	0	0	0
-"dlbcl_ls3271"	0.9382	5	TRUE	5	0	0	0	0	0	0	7	6	17	0	0	2	0	0	0	1	0	0	0	0	0
-"dlbcl_ricover_701"	0.9468	5	TRUE	5	0	0	0	0	1	0	2	6	10	0	0	0	0	0	0	0	0	0	0	0	0
+"maxVal"	"cluster"	"correct"	"trueCluster"	"B2M.CD70.PD1.FAS.COM"	"BCL2.COMP"	"TP53.BIALLELIC"	"PI3K.MOD"	"BLC10.NOTCH2.A20.SPEN"	"CHROM.MOD.ENZYMES"	"HIST.COMP"	"NFKBALT.RASALT.JAK.STAT.ALT.RHOA.SGK1.KLH6.CD58.CD83"	"SUMC4.MUT"	"MYD88.L265"	"MYD88.OTHER"	"CD79B.MYD88.TBL1XR1.BLIMP.ETV6.ZC3H12A"	"SV.TP63"	"SV.BCL6"	"X21Q.AMP"	"SUM.CNAS.C2"	"SUMCNAS.C5"	"X2P16.1.AMP"	"X9P21.3.DEL"	"X18Q.AMP"
+"dlbcl_ls2154"	0.2276	2	FALSE	1	0	0	0	0	0	0	0	2	2	0	0	0	0	0	0	0	0	0	0	0
+"dlbcl_ricover_910"	0.3306	2	FALSE	1	0	0	0	0	0	0	2	0	2	0	0	0	0	0	0	1	0	0	0	0
+"dlbcl_ricover_473"	0.4216	4	FALSE	1	0	0	0	0	6	2	2	0	4	0	0	2	0	0	0	4	2	0	0	0
+"dlbcl_ricover_575"	0.4326	1	TRUE	1	4	0	0	2	2	0	2	0	4	0	0	0	0	0	0	3	1	0	0	0
+"dlbcl_ricover_181"	0.4458	1	TRUE	1	0	0	0	0	4	2	1	4	5	0	0	2	0	3	0	3	2	0	0	1
+"dlbcl_c_d_1106_nullpair"	0.4462	1	TRUE	1	0	0	0	0	4	0	2	0	2	0	0	0	0	3	0	9	2	0	1	0
+"dlbcl_c_d_1112_nullpair"	0.4506	1	TRUE	1	2	0	0	0	0	2	0	2	2	0	0	0	3	0	1	3	2	0	0	0
+"dlbcl_c_d_1146_nullpair"	0.4662	5	FALSE	1	1	0	0	0	0	0	1	2	5	0	0	0	3	0	0	6	0	2	0	0
+"dlbcl_ls3866"	0.4678	1	TRUE	1	0	0	0	0	2	0	2	2	4	0	0	0	0	0	0	1	0	0	0	0
+"dlbcl_mc_f139_ad"	0.4882	1	TRUE	1	2	0	2	2	2	0	4	0	12	0	0	0	0	3	0	1	0	0	0	0
+"dfcidl004_dt"	0.4932	1	TRUE	1	3	0	0	0	4	0	2	0	2	0	0	4	0	0	0	0	0	0	0	0
+"dlbcl_ls3809"	0.5148	1	TRUE	1	2	0	0	0	0	0	0	0	0	0	0	4	0	3	1	3	2	0	0	1
+"dlbcl_ls2595"	0.5338	1	TRUE	1	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+"dlbcl_ls2367"	0.5536	1	TRUE	1	2	0	0	2	0	0	1	4	5	0	0	2	0	3	0	5	2	0	0	1
+"dlbcl_ricover_826"	0.5552	1	TRUE	1	2	0	1	2	2	0	2	2	8	0	0	2	0	3	0	5	1	0	0	0
+"dfcidl001_dt"	0.5624	1	TRUE	1	5	0	0	2	2	0	2	2	4	0	0	0	0	3	0	7	0	2	0	0
+"dlbcl_c_d_1154_nullpair"	0.5632	1	TRUE	1	2	0	0	0	0	0	0	0	0	0	0	0	3	0	0	4	1	0	0	0
+"dlbcl_c_d_1132_nullpair"	0.617	1	TRUE	1	2	0	0	0	2	0	0	2	5	0	0	0	0	0	0	1	0	0	0	0
+"dlbcl_ricover_1144"	0.6244	1	TRUE	1	2	0	0	0	2	0	2	2	6	2	2	4	0	3	0	1	0	0	0	0
+"dlbcl_ls1757"	0.627	1	TRUE	1	4	0	1	0	2	2	0	4	4	0	2	2	3	3	0	7	0	0	0	0
+"dlbcl_bwh_dlbcl64"	0.6638	5	FALSE	1	0	0	0	0	0	2	6	4	10	0	0	0	0	3	0	8	0	2	0	0
+"dlbcl_mc_f648_jkw"	0.6792	1	TRUE	1	2	0	2	0	0	0	0	2	4	0	0	0	0	3	0	4	2	0	0	0
+"dlbcl_ricover_1150"	0.6858	1	TRUE	1	5	0	0	0	0	0	1	2	3	0	0	2	0	3	1	4	2	0	0	1
+"dlbcl_ls2978"	0.7086	1	TRUE	1	4	0	2	0	0	0	4	0	4	0	2	2	3	3	0	6	0	2	0	0
+"dlbcl_mc_f132_mlm"	0.7204	1	TRUE	1	0	0	0	0	4	0	2	2	4	0	2	4	0	3	0	1	0	0	0	0
+"dlbcl_c_d_1155_nullpair"	0.7352	1	TRUE	1	2	0	0	0	0	0	0	0	0	0	0	0	0	3	0	3	0	2	0	0
+"dlbcl_ricover_829"	0.7504	1	TRUE	1	2	0	2	0	4	0	1	0	4	0	2	5	0	3	0	5	2	0	0	0
+"dlbcl_ricover_120"	0.769	1	TRUE	1	2	0	0	0	2	2	0	0	0	0	0	2	0	3	0	4	2	0	0	0
+"dlbcl_c_d_1128_nullpair"	0.802	1	TRUE	1	2	0	0	0	0	0	0	0	0	0	0	0	0	3	0	0	0	0	0	0
+"dlbcl_c_d_1114_nullpair"	0.8344	1	TRUE	1	2	0	0	0	0	0	4	0	4	0	2	2	0	3	0	2	0	0	0	0
+"dlbcl_ricover_478"	0.8368	4	FALSE	1	0	0	0	0	2	0	0	0	0	0	2	2	0	0	0	6	4	0	0	1
+"dlbcl_ricover_865"	0.8414	1	TRUE	1	5	0	1	1	4	0	2	3	5	0	0	0	0	3	0	5	2	0	0	0
+"dlbcl_ricover_694"	0.8674	1	TRUE	1	2	0	0	0	0	0	2	0	2	0	0	0	0	3	0	0	0	0	0	0
+"dlbcl_mayo_dlbcl_5613"	0.8966	1	TRUE	1	2	0	0	0	2	0	0	2	2	0	0	0	0	3	0	3	2	0	0	0
+"dlbcl_ls378"	0.8982	1	TRUE	1	2	0	0	0	2	2	3	0	3	0	2	2	0	3	0	3	0	0	0	0
+"dlbcl_ricover_290"	0.8992	1	TRUE	1	4	0	0	0	3	1	2	0	2	0	2	2	0	3	0	2	1	1	0	0
+"dlbcl_c_d_1123_nullpair"	0.9346	1	TRUE	1	5	0	0	0	4	0	2	0	4	0	0	0	0	3	0	6	1	0	0	0
+"dfcidl010_dt"	0.9442	1	TRUE	1	4	0	0	0	2	0	2	2	4	0	0	0	0	3	0	2	0	0	0	0
+"dlbcl_c_d_1130_nullpair"	0.9462	1	TRUE	1	2	0	0	0	4	1	2	0	2	0	0	0	3	3	0	6	0	0	0	0
+"dlbcl_mc_f927_jhs"	0.2962	4	FALSE	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0
+"dlbcl_ricover_197"	0.3526	5	FALSE	2	0	0	0	0	0	0	0	0	4	0	0	0	0	0	0	4	0	0	0	0
+"dlbcl_mayo_dlbcl_234"	0.3692	2	TRUE	2	0	0	0	2	2	4	4	2	6	0	0	4	0	0	0	2	0	2	0	0
+"dlbcl_mc_f815_bat"	0.3788	2	TRUE	2	0	5	0	0	0	2	1	4	7	0	2	3	3	0	0	6	1	2	0	0
+"dlbcl_ricover_978"	0.3816	2	TRUE	2	2	0	0	2	6	4	4	0	6	0	0	0	0	0	0	7	1	1	0	0
+"dlbcl_ricover_577"	0.4062	2	TRUE	2	0	0	0	3	2	6	2	0	2	0	0	0	0	0	0	3	4	0	0	2
+"dlbcl_mc_f362_mjb1"	0.4218	3	FALSE	2	0	3	1	0	0	4	0	0	2	0	0	2	0	0	0	8	0	0	1	0
+"dlbcl_ricover_320"	0.4296	2	TRUE	2	0	0	0	2	0	0	0	0	0	0	0	0	0	0	1	3	0	0	0	0
+"dlbcl_ls4619"	0.471	2	TRUE	2	0	5	0	0	0	0	2	2	4	0	0	2	0	0	0	6	0	1	1	0
+"dlbcl_c_d_1110_nullpair"	0.5028	2	TRUE	2	0	5	0	0	4	2	5	1	6	0	0	0	0	0	0	3	2	0	0	1
+"dlbcl_ls2245"	0.5172	2	TRUE	2	2	5	1	0	0	4	0	4	4	0	0	0	0	3	0	11	1	1	0	0
+"dlbcl_mc_f344_cjs"	0.5296	2	TRUE	2	0	5	0	5	0	4	0	6	8	0	2	2	0	0	0	6	0	1	0	0
+"dlbcl_ls2325"	0.5456	2	TRUE	2	0	5	0	2	2	0	2	0	2	0	0	0	0	0	0	10	2	0	0	1
+"dlbcl_ricover_384"	0.5512	3	FALSE	2	0	2	0	7	0	4	2	0	2	0	0	0	0	0	0	15	0	1	1	0
+"dlbcl_mc_f606_dmj"	0.5632	3	FALSE	2	0	5	1	1	0	2	0	0	0	0	0	0	0	0	1	8	0	0	1	0
+"dlbcl_ls762"	0.5634	4	FALSE	2	0	0	0	0	0	2	0	2	2	0	0	0	0	0	0	0	2	0	0	1
+"dlbcl_c_d_1141_nullpair"	0.577	2	TRUE	2	0	5	0	2	2	4	0	0	0	0	0	0	0	0	2	6	3	2	0	2
+"dlbcl_ricover_1046"	0.593	3	FALSE	2	0	3	3	1	0	4	0	0	0	0	0	0	0	0	0	12	3	0	0	1
+"dlbcl_ricover_208"	0.6048	3	FALSE	2	0	4	3	1	0	0	0	2	2	0	0	0	0	0	0	13	0	0	1	0
+"dlbcl_ls2599"	0.6074	2	TRUE	2	2	5	0	4	0	0	0	2	6	0	0	0	0	0	0	4	0	0	0	0
+"dlbcl_c_d_1162_nullpair"	0.6166	2	TRUE	2	0	0	0	2	0	2	1	2	3	0	0	0	0	0	0	2	0	0	0	0
+"dlbcl_ls155"	0.6198	5	FALSE	2	0	5	0	2	0	2	4	4	10	0	0	0	0	0	0	0	0	0	0	0
+"dlbcl_ls3615"	0.636	2	TRUE	2	0	0	0	2	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0
+"dlbcl_ls2305"	0.6486	2	TRUE	2	2	5	1	5	0	2	3	0	5	0	0	0	0	0	0	10	0	1	0	0
+"dlbcl_ls4593"	0.6624	2	TRUE	2	0	3	0	1	0	2	4	0	4	0	0	0	0	0	0	7	0	0	0	0
+"dlbcl_ricover_111"	0.6732	2	TRUE	2	0	0	0	2	2	2	0	0	0	0	0	1	0	0	0	3	2	1	0	1
+"dlbcl_ricover_269"	0.678	2	TRUE	2	0	5	0	0	0	2	0	4	4	0	0	0	0	0	0	7	2	0	0	1
+"dlbcl_ls1395"	0.6942	2	TRUE	2	0	4	3	0	0	4	0	2	2	0	0	0	0	0	0	6	0	0	0	0
+"dlbcl_ricover_463"	0.7002	2	TRUE	2	0	0	0	2	0	2	0	2	2	0	0	0	0	0	0	3	0	1	0	0
+"dlbcl_ricover_440"	0.7112	3	FALSE	2	0	5	2	3	0	2	0	2	2	0	0	0	0	0	0	15	1	1	1	0
+"dfcidl009_dt"	0.7148	2	TRUE	2	0	1	0	2	0	2	0	0	0	0	0	0	0	0	1	6	1	1	0	0
+"dlbcl_ricover_216"	0.7324	4	FALSE	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0	1
+"dlbcl_ricover_469"	0.7354	2	TRUE	2	2	5	0	2	2	4	0	0	0	0	0	0	0	0	0	2	0	0	0	0
+"dlbcl_ls1098"	0.7804	2	TRUE	2	2	4	0	2	0	4	2	2	4	0	0	0	0	0	0	2	1	0	0	0
+"dlbcl_ls4616"	0.782	2	TRUE	2	0	5	3	0	0	4	0	4	4	0	0	0	0	0	0	6	0	0	0	0
+"dlbcl_mc_f358_wds"	0.8732	2	TRUE	2	0	5	0	3	0	4	4	0	4	0	0	0	0	0	0	3	0	0	0	0
+"dlbcl_ls843"	0.8764	2	TRUE	2	0	5	0	2	0	6	0	2	4	0	0	2	0	0	0	6	0	1	0	0
+"dlbcl_c_d_1113_nullpair"	0.8858	2	TRUE	2	0	0	0	2	0	2	0	0	0	0	0	0	0	0	0	2	0	1	0	0
+"dlbcl_ls297"	0.9056	2	TRUE	2	0	5	0	3	0	4	2	2	6	0	0	0	0	0	0	4	1	0	0	0
+"dlbcl_ls1620"	0.9162	2	TRUE	2	0	5	0	5	0	6	0	0	0	0	0	0	0	0	0	1	0	0	0	0
+"dlbcl_c_d_1127_nullpair"	0.9742	2	TRUE	2	0	5	0	3	0	4	0	0	0	0	0	0	0	0	0	4	0	0	0	0
+"dlbcl_mc_f210_gwc"	0.3172	3	TRUE	3	0	0	0	0	0	0	2	2	4	0	0	0	0	0	0	7	1	1	0	1
+"dlbcl_ls4054"	0.327	2	FALSE	3	0	0	0	0	0	0	0	2	2	0	0	0	0	0	0	3	0	0	1	0
+"dlbcl_c_d_1131_nullpair"	0.3594	4	FALSE	3	0	0	2	0	2	2	0	0	0	2	0	4	0	0	0	11	0	0	0	0
+"dlbcl_c_d_1118_nullpair"	0.3792	3	TRUE	3	0	0	0	0	0	0	0	0	2	0	0	1	0	3	0	11	0	2	1	0
+"dlbcl_c_d_1111_nullpair"	0.3916	2	FALSE	3	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	0
+"dlbcl_ls3204"	0.3934	3	TRUE	3	2	0	0	0	0	0	2	2	4	0	0	0	0	0	1	9	0	1	0	0
+"dlbcl_ricover_678"	0.4222	3	TRUE	3	3	0	3	0	2	0	0	0	0	0	0	0	0	0	0	4	3	0	0	2
+"dlbcl_ricover_787"	0.4312	5	FALSE	3	0	0	0	2	2	0	0	6	6	0	0	0	0	0	0	9	0	0	0	0
+"dlbcl_ricover_1210"	0.4358	3	TRUE	3	0	0	3	0	0	4	2	2	4	0	0	0	0	0	2	8	0	0	0	0
+"dlbcl_mc_f959_erm"	0.4396	3	TRUE	3	3	0	2	0	0	2	2	0	2	2	0	2	0	3	0	12	6	2	0	2
+"dlbcl_ricover_1169"	0.4432	3	TRUE	3	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	2	0	1	0	0
+"dlbcl_ls88"	0.445	3	TRUE	3	0	3	3	0	0	0	0	0	0	0	0	0	0	0	0	10	3	0	1	0
+"dlbcl_ricover_1165"	0.463	4	FALSE	3	0	0	3	0	0	2	0	0	0	0	2	2	0	0	0	6	2	0	0	0
+"dlbcl_ricover_822"	0.4754	3	TRUE	3	0	0	2	0	0	2	2	0	2	0	0	0	0	0	0	10	6	1	1	2
+"dlbcl_ricover_1072"	0.4762	3	TRUE	3	0	0	0	0	0	0	2	4	8	0	2	2	0	0	0	19	1	1	1	0
+"dlbcl_c_d_1135_nullpair"	0.491	3	TRUE	3	3	0	2	1	0	2	6	0	6	0	0	0	0	3	1	15	4	0	0	1
+"dlbcl_dfci_dlbcl_goe05"	0.4916	4	FALSE	3	0	0	3	0	0	2	0	0	0	2	0	2	0	0	1	5	3	0	0	1
+"dlbcl_ls1921"	0.4974	3	TRUE	3	0	3	1	2	0	0	2	4	8	0	0	0	0	0	1	20	0	2	0	0
+"dlbcl_c_d_1108_nullpair"	0.5176	3	TRUE	3	0	0	2	0	0	0	0	0	1	0	0	0	0	0	1	8	6	0	0	1
+"dlbcl_c_d_1152_nullpair"	0.539	3	TRUE	3	0	0	1	3	0	0	0	2	2	0	0	2	0	0	0	17	1	1	1	0
+"dlbcl_mc_f990_mna"	0.5404	4	FALSE	3	0	0	1	0	1	0	0	2	2	2	0	6	0	0	0	20	3	1	1	0
+"dlbcl_ricover_780"	0.5484	3	TRUE	3	0	2	3	2	0	2	2	2	4	0	0	0	0	0	0	14	3	2	0	0
+"dlbcl_ls1668"	0.5536	3	TRUE	3	0	5	3	1	2	2	6	2	12	0	0	0	0	0	0	18	3	2	1	1
+"dlbcl_ricover_533"	0.5554	3	TRUE	3	0	0	0	2	0	0	0	6	6	0	0	0	0	0	1	18	2	1	0	1
+"dlbcl_ls3309"	0.577	3	TRUE	3	0	5	3	3	0	4	0	0	0	0	0	0	0	0	0	20	2	1	0	0
+"dlbcl_dfci_dlbcl_goe07"	0.5924	3	TRUE	3	0	0	1	0	0	0	0	0	0	0	0	0	0	0	1	7	2	0	1	1
+"dlbcl_ricover_1060"	0.6184	4	FALSE	3	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	4	3	0	0	1
+"dlbcl_ls2328"	0.6268	3	TRUE	3	2	3	3	3	0	4	4	0	4	0	0	0	0	0	1	16	0	0	0	0
+"dlbcl_ricover_299"	0.6356	3	TRUE	3	0	5	1	2	0	4	0	0	0	0	0	1	0	0	1	23	3	2	1	1
+"dlbcl_ls2089"	0.6528	4	FALSE	3	0	0	3	0	0	0	0	0	0	2	0	4	0	0	0	15	5	0	0	2
+"dlbcl_ls2258"	0.6926	3	TRUE	3	0	0	3	0	0	0	0	0	0	0	0	0	0	0	0	9	0	0	0	0
+"dlbcl_ricover_335"	0.705	3	TRUE	3	0	0	3	0	0	0	4	4	8	0	0	0	0	0	1	19	1	2	1	0
+"dlbcl_mc_f739_ama3"	0.7082	3	TRUE	3	0	5	3	2	0	4	3	2	5	0	0	0	0	0	2	21	2	0	1	1
+"dlbcl_ricover_174"	0.7228	3	TRUE	3	2	0	3	1	2	0	0	0	0	0	0	0	0	0	1	18	1	0	0	0
+"dfcidl003_dt"	0.7482	3	TRUE	3	0	3	3	3	0	2	0	2	2	0	0	0	0	3	1	21	1	2	1	0
+"dlbcl_ls3749"	0.7596	3	TRUE	3	0	0	0	1	0	0	2	0	4	0	0	0	0	0	1	19	2	2	1	0
+"dlbcl_ricover_1235"	0.7726	3	TRUE	3	0	5	3	1	2	3	0	0	2	0	0	0	0	0	2	18	1	2	0	1
+"dlbcl_ricover_839"	0.7804	3	TRUE	3	0	0	3	0	0	0	0	2	2	0	0	0	0	0	1	8	0	0	1	0
+"dlbcl_ricover_253"	0.7842	3	TRUE	3	0	0	3	0	0	2	0	0	0	0	0	0	0	3	0	24	1	1	1	0
+"dlbcl_mc_f729_man"	0.7922	3	TRUE	3	0	0	2	0	0	1	1	0	1	0	0	0	0	0	0	7	1	0	1	0
+"dlbcl_ricover_325"	0.8	3	TRUE	3	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	7	1	1	1	0
+"dlbcl_ls146"	0.8032	3	TRUE	3	0	0	3	1	2	0	0	2	2	0	0	0	0	0	1	18	5	2	0	1
+"dlbcl_mc_f089_hcz"	0.8104	3	TRUE	3	0	2	2	0	0	2	0	4	4	0	0	2	0	0	1	16	1	0	1	0
+"dlbcl_ricover_623"	0.821	3	TRUE	3	0	0	1	0	0	2	0	0	4	0	0	0	0	0	1	14	2	2	0	0
+"dlbcl_mayo_dlbcl_7359"	0.8872	3	TRUE	3	3	0	3	0	0	0	1	0	3	0	0	0	0	0	1	18	6	2	0	1
+"dlbcl_ricover_126"	0.9136	3	TRUE	3	0	5	3	2	0	2	0	0	0	0	0	0	0	0	2	17	1	2	1	0
+"dlbcl_ricover_288"	0.9498	3	TRUE	3	0	0	2	0	0	0	2	0	3	0	0	0	0	0	1	16	1	2	1	0
+"dfcidl008_dt"	0.3144	2	FALSE	4	0	0	0	0	0	2	0	2	2	0	0	2	0	0	0	3	0	0	2	0
+"dlbcl_c_d_1140_nullpair"	0.3842	4	TRUE	4	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0
+"dlbcl_ricover_850"	0.4058	4	TRUE	4	0	0	0	0	0	0	0	0	2	0	2	6	0	0	1	7	2	1	0	0
+"dlbcl_ricover_1204"	0.4098	4	TRUE	4	0	0	0	1	0	2	8	0	10	0	0	6	0	0	0	5	3	0	1	2
+"dlbcl_ricover_105"	0.4144	4	TRUE	4	0	0	1	0	2	0	0	0	0	0	0	0	0	0	0	4	3	0	1	1
+"dlbcl_ricover_1278"	0.4278	4	TRUE	4	0	1	2	0	0	0	7	0	10	0	2	3	0	0	0	1	3	0	0	1
+"dlbcl_c_d_1105_nullpair"	0.4356	1	FALSE	4	0	0	1	0	4	2	1	0	1	0	0	2	0	0	0	4	2	0	0	0
+"dlbcl_ricover_467"	0.4542	4	TRUE	4	3	0	3	0	0	2	0	0	0	0	0	6	3	0	0	9	8	0	0	2
+"dlbcl_ricover_506"	0.4548	3	FALSE	4	0	0	0	1	0	0	0	0	0	0	0	2	0	0	0	11	5	1	1	1
+"dlbcl_c_d_1163_nullpair"	0.4606	4	TRUE	4	0	0	0	0	0	0	2	2	6	2	0	8	0	0	0	0	2	0	0	0
+"dlbcl_mc_f089_mlb"	0.4798	4	TRUE	4	0	0	0	0	0	0	2	0	2	0	0	0	0	0	0	1	4	0	0	0
+"dlbcl_ls1683"	0.5076	4	TRUE	4	0	0	2	0	0	2	0	2	2	0	0	2	0	0	0	6	6	1	0	2
+"dlbcl_ls148"	0.5272	4	TRUE	4	0	0	0	0	0	0	0	2	2	0	0	3	0	0	0	2	2	0	0	2
+"dlbcl_ricover_704"	0.5324	4	TRUE	4	2	0	0	0	0	0	0	0	0	0	0	2	0	0	0	1	5	0	0	0
+"dlbcl_ricover_215"	0.5374	4	TRUE	4	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	1	1	0	0	0
+"dlbcl_ricover_1032"	0.5448	3	FALSE	4	0	0	3	0	0	0	2	2	4	2	0	6	0	0	0	11	4	0	0	0
+"dlbcl_ls2208"	0.5536	2	FALSE	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	2	0	0	0
+"dlbcl_ricover_1248"	0.566	4	TRUE	4	0	0	0	0	2	0	0	2	2	2	0	4	0	3	0	6	9	0	0	2
+"dlbcl_ricover_1190"	0.5872	4	TRUE	4	0	0	0	0	0	2	0	0	0	0	0	0	0	3	0	2	4	0	0	1
+"dlbcl_ricover_173"	0.591	4	TRUE	4	0	0	0	0	0	0	2	0	2	2	0	6	0	0	0	0	0	0	0	0
+"dlbcl_ricover_585"	0.5994	4	TRUE	4	3	0	0	0	0	0	0	2	3	2	0	6	0	3	0	5	7	0	1	1
+"dlbcl_ricover_1106"	0.6314	4	TRUE	4	0	0	0	0	0	0	4	0	8	2	0	6	0	0	0	5	8	0	0	2
+"dlbcl_ls1304"	0.637	4	TRUE	4	0	3	0	0	0	0	0	0	0	0	0	4	0	0	0	0	2	0	0	0
+"dlbcl_ricover_431"	0.6396	4	TRUE	4	0	0	0	0	0	0	2	2	8	2	0	4	0	0	0	6	3	0	0	0
+"dlbcl_ricover_224"	0.661	4	TRUE	4	0	0	0	2	0	0	0	0	0	0	0	4	0	0	0	3	4	0	0	0
+"dlbcl_ricover_763"	0.6626	4	TRUE	4	0	0	1	0	0	0	0	2	2	0	0	2	0	0	0	9	4	0	0	1
+"dlbcl_ricover_1287"	0.6858	4	TRUE	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	3	0	0	1
+"dlbcl_c_d_1104_nullpair"	0.6878	4	TRUE	4	0	0	3	0	0	0	0	0	0	2	0	4	0	0	0	4	3	0	0	1
+"dlbcl_mc_f519_alt"	0.6902	4	TRUE	4	0	0	0	0	2	0	0	0	0	0	0	2	0	0	0	1	5	0	1	1
+"dlbcl_ricover_720"	0.7152	4	TRUE	4	0	0	0	0	0	0	0	0	0	2	0	6	0	3	0	6	6	0	0	1
+"dlbcl_c_d_1120_nullpair"	0.7202	4	TRUE	4	0	0	0	0	0	2	0	0	0	0	0	2	0	0	0	3	2	0	0	1
+"dlbcl_c_d_1142_nullpair"	0.721	4	TRUE	4	0	0	1	0	0	0	0	2	2	0	0	0	0	0	0	3	6	0	0	2
+"dlbcl_mc_f339_jps2"	0.7224	4	TRUE	4	5	0	0	0	0	0	1	0	1	0	0	4	0	0	0	2	4	0	0	1
+"dlbcl_ricover_685"	0.7456	4	TRUE	4	0	0	0	0	0	0	0	0	2	2	0	8	0	0	0	6	1	0	0	0
+"dlbcl_ricover_773"	0.767	4	TRUE	4	0	0	0	0	0	4	0	0	0	2	0	4	0	0	0	4	3	0	0	1
+"dlbcl_c_d_1144_nullpair"	0.7706	4	TRUE	4	0	0	2	0	0	0	1	2	3	0	0	4	0	0	0	1	3	0	0	1
+"dlbcl_ricover_583"	0.7784	4	TRUE	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	4	5	0	0	1
+"dlbcl_ls4085"	0.829	4	TRUE	4	0	0	0	0	0	2	0	0	1	0	0	2	0	0	0	4	4	0	0	1
+"dlbcl_c_d_1166_nullpair"	0.8332	4	TRUE	4	0	0	3	0	0	2	0	0	0	0	0	4	0	0	0	4	9	0	0	2
+"dlbcl_ricover_712"	0.8444	4	TRUE	4	0	0	0	0	0	0	2	0	2	0	0	2	0	0	0	2	5	0	0	1
+"dlbcl_ricover_1293"	0.8444	4	TRUE	4	0	0	0	0	0	0	0	0	2	2	0	8	0	0	0	3	2	0	0	1
+"dlbcl_ricover_99"	0.8664	4	TRUE	4	0	0	0	0	2	0	0	0	0	0	2	4	0	0	0	1	4	0	0	1
+"dlbcl_ricover_1257"	0.8716	4	TRUE	4	0	0	0	0	0	0	2	0	2	0	0	2	0	0	0	2	5	0	1	2
+"dlbcl_ricover_417"	0.873	4	TRUE	4	0	0	0	0	0	0	0	0	0	2	0	6	3	0	0	4	3	0	0	1
+"dlbcl_ricover_134"	0.9156	4	TRUE	4	0	0	1	0	0	2	0	2	2	2	0	4	0	0	0	5	8	0	0	2
+"dlbcl_c_d_1125_nullpair"	0.9234	4	TRUE	4	0	1	0	0	0	0	0	0	2	2	0	6	0	0	0	3	6	0	0	1
+"dlbcl_ricover_543"	0.9366	4	TRUE	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	5	0	0	1
+"dlbcl_ls951"	0.318	5	TRUE	5	2	0	0	1	0	0	0	6	6	0	0	0	0	0	1	5	0	1	0	0
+"dlbcl_ls2264"	0.337	2	FALSE	5	0	3	0	0	0	0	4	2	6	0	0	2	0	0	0	0	2	0	0	1
+"dlbcl_ricover_1081"	0.3418	5	TRUE	5	2	0	0	1	2	4	1	2	7	0	0	2	0	0	0	3	0	0	0	0
+"dlbcl_ricover_711"	0.3848	1	FALSE	5	0	0	1	0	0	0	6	2	10	0	0	0	0	3	0	11	0	2	0	0
+"dlbcl_ricover_102"	0.419	5	TRUE	5	0	0	0	0	0	0	0	2	4	0	0	0	0	0	0	0	0	0	0	0
+"dlbcl_ricover_151"	0.4224	5	TRUE	5	0	0	3	2	0	0	4	2	11	0	0	0	0	0	1	9	1	1	0	0
+"dlbcl_c_d_1151_nullpair"	0.4604	5	TRUE	5	2	0	3	4	0	0	3	8	13	0	0	1	0	3	1	3	0	0	0	0
+"dlbcl_ricover_1018"	0.4642	3	FALSE	5	0	0	1	1	0	0	5	6	13	0	0	0	0	0	0	15	3	1	0	0
+"dlbcl_c_d_1148_nullpair"	0.4824	5	TRUE	5	5	0	0	4	0	0	2	9	12	0	0	0	0	3	0	4	0	2	0	0
+"dlbcl_ls3387"	0.5166	2	FALSE	5	2	5	0	4	1	2	10	4	16	0	0	0	0	0	0	2	0	0	0	0
+"dlbcl_ricover_408"	0.5326	3	FALSE	5	0	0	0	2	0	0	0	2	4	0	0	0	0	0	2	7	2	2	0	0
+"dlbcl_ricover_597"	0.5506	4	FALSE	5	0	0	1	0	0	0	8	2	12	2	0	6	0	0	0	4	2	0	0	1
+"dlbcl_c_d_1138_nullpair"	0.5534	4	FALSE	5	0	0	0	4	0	0	4	0	4	0	0	0	0	0	0	3	4	0	0	1
+"dlbcl_ricover_1299"	0.555	5	TRUE	5	0	0	0	0	0	0	2	2	8	0	0	2	0	0	0	3	2	0	0	1
+"dlbcl_ricover_866"	0.5578	2	FALSE	5	0	5	0	8	0	6	6	8	20	0	0	0	0	0	0	10	0	2	0	0
+"dlbcl_ricover_342"	0.5604	2	FALSE	5	0	0	0	2	0	0	0	2	4	0	0	0	0	0	0	1	0	0	0	0
+"dlbcl_mayo_dlbcl_3653"	0.5712	4	FALSE	5	0	0	0	0	0	0	0	3	3	0	0	2	0	0	0	1	0	0	0	0
+"dlbcl_ricover_617"	0.616	5	TRUE	5	2	0	0	2	2	0	4	2	10	0	0	0	0	0	1	5	0	2	0	0
+"dlbcl_c_d_1153_nullpair"	0.6182	5	TRUE	5	0	0	0	0	0	0	8	2	10	0	0	0	0	0	0	7	2	0	0	1
+"dlbcl_ls1899"	0.6352	5	TRUE	5	0	0	0	0	0	0	1	2	7	0	0	0	0	0	0	2	0	0	0	0
+"dlbcl_ricover_274"	0.652	5	TRUE	5	0	0	2	0	0	0	10	2	14	2	0	2	0	0	0	6	0	0	0	0
+"dlbcl_ricover_1045"	0.695	5	TRUE	5	2	0	0	0	0	0	2	6	10	0	2	2	0	0	0	2	2	0	0	0
+"dlbcl_ls2590"	0.7036	5	TRUE	5	0	0	0	0	0	2	3	4	11	0	0	0	0	0	0	2	1	0	0	0
+"dlbcl_mc_f139_ljf"	0.724	5	TRUE	5	2	0	0	0	0	2	4	14	23	0	0	2	0	0	1	6	0	1	0	0
+"dlbcl_ls3808"	0.7318	5	TRUE	5	0	0	0	0	0	0	0	4	4	0	0	0	0	0	0	0	0	0	0	0
+"dlbcl_ls3499"	0.7446	5	TRUE	5	2	0	0	0	0	0	5	2	7	0	0	0	0	0	0	3	0	2	0	0
+"dlbcl_ricover_148"	0.7548	5	TRUE	5	0	0	1	0	0	0	0	6	8	0	0	0	0	0	0	5	0	0	0	0
+"dlbcl_c_d_1109_nullpair"	0.7794	5	TRUE	5	4	0	0	0	0	0	5	2	8	0	0	0	0	0	0	1	0	1	0	0
+"dlbcl_dfci_dlbcl_goe08"	0.787	5	TRUE	5	4	0	0	0	2	0	4	4	10	0	0	0	0	0	0	1	0	0	0	0
+"dlbcl_ricover_692"	0.7876	5	TRUE	5	2	0	0	2	2	0	7	4	17	0	0	2	0	0	0	6	1	2	0	0
+"dlbcl_ricover_950"	0.7954	5	TRUE	5	0	0	0	2	0	0	3	4	9	0	0	0	0	0	0	0	0	0	0	0
+"dlbcl_ricover_338"	0.8348	5	TRUE	5	2	0	0	0	0	0	0	4	8	0	0	0	0	0	0	1	0	0	0	0
+"dlbcl_ricover_985"	0.8846	5	TRUE	5	0	0	0	0	0	0	0	8	11	0	0	0	0	0	0	5	0	1	0	0
+"dlbcl_ricover_1138"	0.9088	5	TRUE	5	4	0	0	0	2	0	4	12	17	0	0	0	0	0	0	2	0	0	0	0
+"dlbcl_ricover_1247"	0.9214	5	TRUE	5	0	0	0	0	0	0	3	4	9	0	0	2	0	0	0	0	0	0	0	0
+"dlbcl_ls3271"	0.9278	5	TRUE	5	0	0	0	0	0	0	7	6	17	0	0	2	0	0	0	1	0	0	0	0
+"dlbcl_ricover_701"	0.9314	5	TRUE	5	0	0	0	0	1	0	2	6	10	0	0	0	0	0	0	0	0	0	0	0
+"dlbcl_ricover_361"	0.9482	5	TRUE	5	0	0	0	0	0	0	0	6	8	0	0	0	0	0	0	0	0	0	0	0

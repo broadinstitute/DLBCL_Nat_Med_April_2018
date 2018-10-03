@@ -82,6 +82,7 @@ NMF.FN <- function(X,tol,K) {
         return(list(W,H,X.ap))
 }
 
+#set.seed(1)
 trainingOnly = TRUE
 fullDFfile = "DataTables/DLBCL_mutation_scna_sv_matrix.no_21q22.3.21_July_2017.txt"
 DLBCL <- read.delim(paste(fullDFfile,sep=""),header=T,sep='\t',as.is=T,comment="#")
@@ -164,6 +165,8 @@ if(reduced){
 }
 res3 <- NMF.W(as.matrix(tmpX),as.matrix(W0),tol,K)
 H1 <- res3[[2]] #### H1 is an association of new samples to clustering
-H1.norm <- apply(H1,2,function(x) x/sum(x))
+H1.eps = apply(H1,2,function(x) if(sum(x) == 0){x = x+.1} else {x})
+H1.norm <- apply(H1.eps,2,function(x) x/sum(x))
 g1 <- apply(H1,2,function(x) which.max(x)) ### hard-partitioned clustering membership for new samples
+#print(any(is.na(H1.norm)))
 

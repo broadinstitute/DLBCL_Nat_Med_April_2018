@@ -4,7 +4,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 useSV = TRUE
 useCNA = TRUE
-source("LoadLibraries.R")
+GD = TRUE
+useProbs = TRUE
+fixedValidationSets = FALSE
+fullFeatures = FALSE
+source("src/LoadLibraries.R")
 source("src/ConstructReducedFeatureMatrix.R")
 source("src/GenerateFullDF.R")
 source("src/GenerateTestTrainSets.R")
@@ -52,6 +56,13 @@ colnames(reducedDF)[1] = "cluster"
 validationSize = 4
 validationSets = vector("list", validationSize)
 trainTable = reducedDF[rownames(reducedDF) %in% trainingSet,]
+if(fullFeatures){
+  source("src/GenerateFullDF2.R")
+  orderedLabels = labels[rownames(fullDF),]
+  fullDF = cbind(factor(orderedLabels$cluster), fullDF)
+  colnames(fullDF)[1] = "cluster"
+  trainTable = fullDF[rownames(fullDF) %in% trainingSet,]
+}
 trainTable = trainTable[sample(nrow(trainTable), nrow(trainTable)),]
 subset1 = trainTable[trainTable$cluster == 1,]
 subset2 = trainTable[trainTable$cluster == 2,]
@@ -87,11 +98,10 @@ for(i in 1:validationSize){
   x = validationSets[[i]]
   validationSets[[i]] = x[!is.na(x)]
 }
-
 #generate clusters from probability distribution
 n = 1
 nforests = 10
-useProbabilities = TRUE
+useProbabilities = useProbs
 if(useProbabilities){
   allClusterAssignments = vector("list", length = nforests)
   for(c in 1:nforests){
@@ -115,6 +125,13 @@ if(useProbabilities){
 
 #train nforests
 rfKList = vector("list", length = validationSize)
+if(fixedValidationSets){
+  v1 = read.csv("WrittenFiles/validationSet.1.txt", header = FALSE)
+  v2 = read.csv("WrittenFiles/validationSet.2.txt", header = FALSE)
+  v3 = read.csv("WrittenFiles/validationSet.3.txt", header = FALSE)
+  v4 = read.csv("WrittenFiles/validationSet.4.txt", header = FALSE)
+  validationSets = list(v1$V1,v2$V1,v3$V1,v4$V1)
+}
 
 for (k in 1:validationSize){
   trainTableFold = trainTable[!(rownames(trainTable) %in% validationSets[[k]]),]
@@ -262,7 +279,6 @@ if(useAggregate){
     p = ggplot(plotDF, aes(x=maxActual, y=maxPred, colour = correctness)) + geom_point() +
       scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by = .1)) +
       scale_y_continuous(limits = c(0,1), breaks = seq(0,1,by = .1))
-    print(p)
   }
 } else {
   numBins = 20
@@ -287,7 +303,7 @@ if(useAggregate){
   
   plotDF$correctness = as.logical(plotDF$correctness)
   colnames(plotDF) = c("maxPred","maxActual", "correctness")
-  splitList = split(plotDF, cut(plotDF$maxPred, seq(0,1,by = .05)), drop = FALSE)
+  splitList = split(plotDF, cut(seq_along(rownames(plotDF)), 10, labels = FALSE))
   
   plotDF = data.frame()
   averages = c()
@@ -318,13 +334,6 @@ if(useAggregate){
   plotDF = data.frame(plotDF)
   colnames(plotDF) = c("AverageOfBin", "AgreementFraction")
   
-  grob = grobTree(textGrob(paste("Pearson Correlation : ", 
-                                 round(cor.test(plotDF$AverageOfBin, 
-                                                plotDF$AgreementFraction, 
-                                                method="pearson")[[4]], 4) ),
-                           x = 0.05, y = 0.87, 
-                           hjust = 0, gp = gpar(col = "red", fontsize = 11, fontface = "bold")))
-  
   weightedPearson = round(pearson_custom(averages,agreements,splitList), 4)
   grob2 = grobTree(textGrob(paste("Weighted Pearson Correlation : ", 
                                   weightedPearson),
@@ -334,26 +343,34 @@ if(useAggregate){
   p = ggplot(plotDF, aes(x=AverageOfBin, y=AgreementFraction)) + geom_point() +
     scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by = .1)) +
     scale_y_continuous(limits = c(0,1), breaks = seq(0,1,by = .1)) + 
-    annotation_custom(grob) +
     annotation_custom(grob2) +
     geom_pointrange(aes(ymin=AgreementFraction-lowErrs, ymax = AgreementFraction+upErrs))
   
   filePath = paste("Plots/AgreementvsConfidencek",
-                   validationSize,".forests", nforests,"probLabels",useProbabilities,".jpeg", sep="")
-  if(!useSV && !useCNA){
-    filePath = paste("Plots/AgreementvsConfidencek",
-                     validationSize,".forests", nforests,"probLabels",useProbabilities,"_noSV_noCNA.jpeg", sep="")
-  } else if(!useSV){
-    filePath = paste("Plots/AgreementvsConfidencek",
-                     validationSize,".forests", nforests,"probLabels",useProbabilities,"_noSV.jpeg", sep="")
-  } else if(!useCNA){
-    filePath = paste("Plots/AgreementvsConfidencek",
-                     validationSize,".forests", nforests,"probLabels",useProbabilities,"_noCNA.jpeg", sep="")
-  }
+                   validationSize,".forests", nforests,"probLabels",useProbabilities, sep="")
+  
   if(downSample){
-    filePath = paste("Plots/AgreementvsConfidencek",
-                     validationSize,".forests", nforests,"probLabels",useProbabilities,"_DS.jpeg", sep="")
+    filePath = paste(filePath, "_DS", sep="")
   }
+  if(!useSV){
+    filePath = paste(filePath, "_noSV", sep="")
+  }
+  if(!useCNA){
+    filePath = paste(filePath, "_noCNA", sep="")
+  }
+  if(GD){
+    filePath = paste(filePath, "_GD", sep="")
+  }
+  if(!useProbs){
+    filePath = paste(filePath, "_BinaryLabels", sep="")
+  }
+  if(fixedValidationSets){
+    filePath = paste(filePath, "_FixedSets", sep="")
+  }
+  if(fullFeatures){
+    filePath = paste(filePath,"_161F", sep="")
+  }
+  filePath = paste(filePath, ".jpeg", sep="")
   #print(filePath)
   
   #jpeg(filePath)
@@ -396,17 +413,29 @@ bjoernFile = reducedDF[rownames(sortedFrame),]
 bjoernFile = 
   cbind(sortedFrame$maxval,sortedFrame$Predicted, sortedFrame$Predicted == sortedFrame$TrueCluster,sortedFrame$TrueCluster, bjoernFile)
 colnames(bjoernFile)[1:4] = c("maxVal", "cluster", "correct", "trueCluster")
-filename = "WrittenFiles/RF_sortedSamples.tsv"
+filename = "WrittenFiles/RF_sortedSamples"
 if(downSample){
-  filename = "WrittenFiles/RF_sortedSamples_DS.tsv"
+  filename = paste(filename, "_DS", sep="")
 }
-if(!useSV && !useCNA){
-  filename = "WrittenFiles/RF_sortedSamples_noSV_noCNA.tsv"
-} else if(!useSV){
-  filename = "WrittenFiles/RF_sortedSamples_noSV.tsv"
-} else if(!useCNA){
-  filename = "WrittenFiles/RF_sortedSamples_noCNA.tsv"
+if(!useSV){
+  filename = paste(filename, "_noSV", sep="")
 }
+if(!useCNA){
+  filename = paste(filename, "_noCNA", sep="")
+}
+if(GD){
+  filename = paste(filename, "_GD", sep="")
+}
+if(!useProbs){
+  filename = paste(filename, "_BinaryLabels", sep="")
+}
+if(fixedValidationSets){
+  filename = paste(filename, "_FixedSets", sep="")
+}
+if(fullFeatures){
+  filename = paste(filename,"_161F", sep="")
+}
+filename = paste(filename, ".tsv", sep="")
 write.table(bjoernFile, filename, sep='\t', row.names = TRUE, col.names = TRUE)
 
 
@@ -460,17 +489,80 @@ p1 = ggplot(data = melted, aes(x=Var1, y=Var2)) +
   geom_vline(xintercept=c(v2,v3,v4,v5), linetype="solid") +
   geom_hline(yintercept=c(y1,y2,y3,y4), linetype = "solid")
 
-filename = "Plots/RF_sortedHeatmap.jpeg"
+filename = "Plots/RF_sortedHeatmap"
 if(downSample){
-  filename = "Plots/RF_sortedHeatmap_DS.jpeg"
+  filename = paste(filename, "_DS", sep="")
 }
-if(!useSV && !useCNA){
-  filename = "Plots/RF_sortedHeatmap_noSV_noCNA.jpeg"
-} else if(!useSV){
-  filename = "Plots/RF_sortedHeatmap_noSV.jpeg"
-} else if(!useCNA){
-  filename = "Plots/RF_sortedHeatmap_noCNA.jpeg"
+if(!useSV){
+  filename = paste(filename, "_noSV", sep="")
 }
+if(!useCNA){
+  filename = paste(filename, "_noCNA", sep="")
+}
+if(GD){
+  filename = paste(filename, "_GD", sep="")
+}
+if(!useProbs){
+  filename = paste(filename, "_BinaryLabels", sep="")
+}
+if(fixedValidationSets){
+  filename = paste(filename, "_FixedSets", sep="")
+}
+if(fullFeatures){
+  filename = paste(filename,"_161F", sep="")
+}
+filename = paste(filename, ".jpeg", sep="")
 #jpeg(filename, width = 1920, height = 1080)
 #print(p1)
 #dev.off()
+
+evaluateTrashSet = TRUE
+if(evaluateTrashSet){
+  source("src/GenerateTrashReduced.R")
+  
+  allTrashPreds = matrix(ncol = 5)
+  allTrashPreds = data.frame(allTrashPreds)
+  colnames(allTrashPreds) = c(1,2,3,4,5)
+  for(k in 1:validationSize){
+    prevnames = NA
+    for(i in 1:nforests){
+      currRF = rfKList[[k]][[i]]
+      predictions = predict(currRF, reducedDFTrash, predict.all = TRUE, norm.votes = TRUE, type="prob")
+      allTrashPreds = rbind(allTrashPreds, predictions$aggregate)
+    }
+  }
+  allTrashPreds = allTrashPreds[-1,]
+  maxvals = c()
+  for(i in 1:nrow(allTrashPreds)){
+    val = max(allTrashPreds[i,1:5])
+    maxvals = c(maxvals,val)
+  }
+  allTrashPreds = cbind(allTrashPreds, maxvals)
+  p = ggplot(allTrashPreds, aes(x=maxvals)) +
+    geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
+    ggtitle("Confidence in RF: Trash Set") +
+    theme(plot.title = element_text(hjust = 0.5),
+          title = element_text(size=20)) +
+    scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
+    theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
+          axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
+          axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
+          axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
+  jpeg("Plots/RF_TrashSet_Confidences.jpeg", width = 1080, height = 720)
+  print(p)
+  dev.off()
+  
+  p = ggplot(bjoernFile, aes(x=maxVal)) +
+    geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
+    ggtitle("Confidence in RF: All Validation Sets") +
+    theme(plot.title = element_text(hjust = 0.5),
+          title = element_text(size=20)) +
+    scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
+    theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
+          axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
+          axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
+          axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
+  jpeg("Plots/RF_ValidationSets_Confidences.jpeg", width = 1080, height = 720)
+  print(p)
+  dev.off()
+}

@@ -1,10 +1,12 @@
 
 rm(list = ls())
 knitr::opts_chunk$set(echo = TRUE)
-
 toeval = TRUE
-useSV = FALSE
-useCNA = FALSE
+useSV = TRUE
+useCNA = TRUE
+GD = TRUE
+fixedValidationSets = FALSE
+fullFeatures = FALSE
 #set.seed(123)
 #set.seed(1680)
 
@@ -28,6 +30,13 @@ colnames(reducedDF)[1] = "cluster"
 validationSize = 4
 validationSets = vector("list", validationSize)
 trainTable = reducedDF[rownames(reducedDF) %in% trainingSet,]
+if(fullFeatures){
+  source("src/GenerateFullDF2.R")
+  orderedLabels = labels[rownames(fullDF),]
+  fullDF = cbind(factor(orderedLabels$cluster), fullDF)
+  colnames(fullDF)[1] = "cluster"
+  trainTable = fullDF[rownames(fullDF) %in% trainingSet,]
+}
 trainTable = trainTable[sample(nrow(trainTable), nrow(trainTable)),]
 subset1 = trainTable[trainTable$cluster == 1,]
 subset2 = trainTable[trainTable$cluster == 2,]
@@ -65,7 +74,13 @@ for(i in 1:validationSize){
 }
 #validationSize = 1
 
-
+if(fixedValidationSets){
+  v1 = read.csv("WrittenFiles/validationSet.1.txt", header = FALSE)
+  v2 = read.csv("WrittenFiles/validationSet.2.txt", header = FALSE)
+  v3 = read.csv("WrittenFiles/validationSet.3.txt", header = FALSE)
+  v4 = read.csv("WrittenFiles/validationSet.4.txt", header = FALSE)
+  validationSets = list(v1$V1,v2$V1,v3$V1,v4$V1)
+}
 lowerLabels = labels
 rownames(lowerLabels) = tolower(rownames(lowerLabels))
 
@@ -117,14 +132,13 @@ Hnorms$correct = Hnorms$cluster == allTrainingLowerLabels$cluster
 Hnorms$trueCluster = allTrainingLowerLabels$cluster
 
 
-
 top70th = Hnorms[1:(nrow(Hnorms)*.7),]
 top70thConfMat = confusionMatrix(factor(top70th$cluster), factor(top70th$trueCluster))
 top70thConfMat
 
 
 
-splitList = split(Hnorms, cut(Hnorms$maxVal, seq(0,1,by = 1/20)), drop = FALSE)
+splitList = split(Hnorms, cut(seq_along(rownames(Hnorms)), 10, labels = FALSE))
 plotDF = data.frame()
 averages = c()
 agreements = c()
@@ -176,22 +190,28 @@ p = ggplot(plotDF, aes(x=AverageOfBin, y=AgreementFraction)) + geom_point() +
   geom_pointrange(aes(ymin=AgreementFraction-lowErrs, ymax = AgreementFraction+upErrs), width=.2)
 
 filePath = paste("Plots/AgreementvsConfidencek",
-                 4,"NMF",".jpeg", sep="")
+                 4,"NMF", sep="")
 if(downSample){
-  filePath = paste("Plots/AgreementvsConfidencek",
-                   4,"NMF","_DS.jpeg", sep="")
-} else if (!useCNA && !useSV){
-  filePath = paste("Plots/AgreementvsConfidencek",
-                   4,"NMF","noCNA_noSV.jpeg", sep="")
-} else if (!useCNA){
-  filePath = paste("Plots/AgreementvsConfidencek",
-                   4,"NMF","noCNA.jpeg", sep="")
-} else if (!useSV){
-  filePath = paste("Plots/AgreementvsConfidencek",
-                   4,"NMF","noSV.jpeg", sep="")
+  filePath = paste(filepath,"_DS", sep="")
 }
+if (!useSV){
+  filePath = paste(filePath,"_noSV", sep="")
+}
+if (!useCNA){
+  filePath = paste(filePath,"_noCNA", sep="")
+}
+if (GD){
+  filePath = paste(filePath,"_GD", sep="")
+}
+if(fixedValidationSets){
+  filePath = paste(filePath,"_FixedSets", sep="")
+}
+if(fullFeatures){
+  filePath = paste(filePath,"_161F", sep="")
+}
+filePath = paste(filePath, ".jpeg", sep="")
 
-#print(filePath)
+print(filePath)
 
 #jpeg(filePath)
 #print(p)
@@ -204,17 +224,27 @@ rownames(reducedDF) = tolower(rownames(reducedDF))
 Hnorms = Hnorms[order(Hnorms[,7], Hnorms[,6]),]
 bjoernFile = reducedDF[rownames(Hnorms),]
 bjoernFile = cbind(Hnorms[6:9], bjoernFile)
-filename = "WrittenFiles/pNMF_sortedSamples.tsv"
+filename = "WrittenFiles/pNMF_sortedSamples"
 
 if(downSample){
-  filename = "WrittenFiles/pNMF_sortedSamples_DS.tsv"
-} else if(!useCNA && !useSV){
-  filename = "WrittenFiles/pNMF_sortedSamples_noCNA_noSV.tsv"
-} else if(!useCNA){
-  filename = "WrittenFiles/pNMF_sortedSamples_noCNA.tsv"
-} else if(!useSV){
-  filename = "WrittenFiles/pNMF_sortedSamples_noSV.tsv"
+  filename = paste(filename, "_DS", sep = "")
 }
+if(!useSV){
+  filename = paste(filename, "_noSV", sep = "")
+}
+if(!useCNA){
+  filename = paste(filename, "_noCNA", sep = "")
+}
+if(GD){
+  filename = paste(filename, "_GD", sep = "")
+}
+if(fixedValidationSets){
+  filename = paste(filename,"_FixedSets", sep="")
+}
+if(fullFeatures){
+  filename = paste(filename,"_161F", sep="")
+}
+filename = paste(filename, ".tsv", sep = "")
 write.table(bjoernFile, filename, sep='\t', row.names = TRUE, col.names = TRUE)
 
 c1Features = toupper(c("SV.BCL6","B2M.CD70.PD1.FAS.com","BLC10.NOTCH2.A20.SPEN", "SV.TP63", "MYD88.OTHER"))
@@ -266,15 +296,71 @@ p1 = ggplot(data = melted, aes(x=Var1, y=Var2)) +
   geom_vline(xintercept=c(v2,v3,v4,v5), linetype="solid") +
   geom_hline(yintercept=c(y1,y2,y3,y4), linetype = "solid")
 p1
-filename = "Plots/pNMF_sortedHeatmap.jpeg"
+filename = "Plots/pNMF_sortedHeatmap"
+
 if(downSample){
-  filename = "Plots/pNMF_sortedHeatmap_DS.jpeg"
-} else if(!useCNA && !useSV){
-  filename = "Plots/pNMF_sortedHeatmap_noCNA_noSV.jpeg"
-} else if(!useCNA){
-  filename = "Plots/pNMF_sortedHeatmap_noCNA.jpeg"
-} else if(!useSV){
-  filename = "Plots/pNMF_sortedHeatmap_noSV.jpeg"
+  filename = paste(filename, "_DS", sep = "")
+}
+if(!useSV){
+  filename = paste(filename, "_noSV", sep = "")
+}
+if(!useCNA){
+  filename = paste(filename, "_noCNA", sep = "")
+}
+if(GD){
+  filename = paste(filename, "_GD", sep = "")
+}
+if(fixedValidationSets){
+  filename = paste(filename,"_FixedSets", sep="")
+}
+if(fullFeatures){
+  filename = paste(filename,"_161F", sep="")
+}
+filename = paste(filename, ".jpeg", sep = "")
+
+evaluateTrashSet = TRUE
+if(evaluateTrashSet){
+  source("src/GenerateTrashReduced.R")
+  reducedDFTrash = t(reducedDFTrash)
+  trashRes <- NMF.W(as.matrix(reducedDFTrash),as.matrix(W0),tol,K)
+  H1Trash <- trashRes[[2]] #### H1Trash is an association of new samples to clustering
+  H1Trash.eps = apply(H1Trash,2,function(x) if(sum(x) == 0){x = x+.1} else {x})
+  H1Trash.norm <- apply(H1Trash.eps,2,function(x) x/sum(x))
+  maxvalsTrash = c()
+  for(i in 1:ncol(H1Trash.norm)){
+    val = max(H1Trash.norm[,i])
+    maxvalsTrash = c(maxvalsTrash, val)
+  }
+  maxvalsTrash = data.frame(maxvalsTrash)
+  p = ggplot(maxvalsTrash, aes(x=maxvalsTrash)) +
+    geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
+    ggtitle("Confidence in NMF: Trash Set") +
+    theme(plot.title = element_text(hjust = 0.5),
+          title = element_text(size=20)) +
+    scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
+    theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
+          axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
+          axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
+          axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
+  jpeg("Plots/NMF_TrashSet_Confidences.jpeg", width = 1080, height = 720)
+  print(p)
+  dev.off()
+  
+  upper = 15
+  p = ggplot(bjoernFile, aes(x=maxVal)) +
+    geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
+    ggtitle("Confidence in NMF: All Validation Sets") +
+    theme(plot.title = element_text(hjust = 0.5),
+          title = element_text(size=20)) +
+    scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
+    scale_y_continuous(limits = c(0,upper), breaks = seq(0,upper, by=1)) +
+    theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
+          axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
+          axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
+          axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
+  jpeg("Plots/NMF_ValidationSets_Confidences.jpeg", width = 1080, height = 720)
+  print(p)
+  dev.off()
 }
 #jpeg(filename, width = 1920, height = 1080)
 #print(p1)
