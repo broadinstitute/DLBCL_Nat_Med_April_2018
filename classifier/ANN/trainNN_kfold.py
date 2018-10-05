@@ -25,7 +25,7 @@ def main(seed, folds, original=True, COO=False,
 
 
 
-    #torch.manual_seed(seed)
+    torch.manual_seed(seed)
 
     nets = []
     for k in range(0, folds):

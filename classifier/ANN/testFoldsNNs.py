@@ -93,8 +93,8 @@ def main(seed, folds):
     return predictions, trueLabels, probabilities, match, sampleNames
 
 folds = 4
-#seed = 1234
-seed = np.random.randint(0,99999999)
+seed = 44825199
+#seed = np.random.randint(0,99999999)
 predictions, trueLabels, probabilities, matches, sampleNames = main(seed, folds)
 predictionsFlat = [item for sublist in predictions for item in sublist]
 trueLabelsFlat = [item for sublist in trueLabels for item in sublist]

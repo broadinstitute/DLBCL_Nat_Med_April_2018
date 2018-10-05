@@ -1,5 +1,5 @@
 rm(list = ls())
-#set.seed(199)
+set.seed(200)
 knitr::opts_chunk$set(echo = TRUE)
 
 useSV = TRUE
@@ -7,7 +7,12 @@ useCNA = TRUE
 GD = TRUE
 useProbs = TRUE
 fixedValidationSets = FALSE
-fullFeatures = FALSE
+fullFeatures = TRUE
+if(fullFeatures){
+  nFeatures = 161
+} else {
+  nFeatures = 21
+}
 source("src/LoadLibraries.R")
 source("src/ConstructReducedFeatureMatrix.R")
 source("src/GenerateFullDF.R")
@@ -134,6 +139,7 @@ if(fixedValidationSets){
 }
 
 for (k in 1:validationSize){
+  print(k)
   trainTableFold = trainTable[!(rownames(trainTable) %in% validationSets[[k]]),]
   indices = match(rownames(trainTableFold), rownames(trainTable))
   rfList = vector("list", length = nforests)
@@ -516,53 +522,199 @@ filename = paste(filename, ".jpeg", sep="")
 #print(p1)
 #dev.off()
 
+p = ggplot(bjoernFile, aes(x=maxVal)) +
+  geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
+  ggtitle("Confidence in RF: All Validation Sets") +
+  theme(plot.title = element_text(hjust = 0.5),
+        title = element_text(size=20)) +
+  scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
+  theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
+        axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
+        axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
+        axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
+jpeg("Plots/RF_ValidationSets_Confidences.jpeg", width = 1080, height = 720)
+print(p)
+dev.off()
+
 evaluateTrashSet = TRUE
 if(evaluateTrashSet){
   source("src/GenerateTrashReduced.R")
+  if(fullFeatures){
+    predictDF = fullDFTrash
+  } else {
+    predictDF = reducedDFTrash
+  }
   
-  allTrashPreds = matrix(ncol = 5)
-  allTrashPreds = data.frame(allTrashPreds)
-  colnames(allTrashPreds) = c(1,2,3,4,5)
+  allTrashPredsList = vector("list", length = validationSize)
+  
   for(k in 1:validationSize){
-    prevnames = NA
+    allTrashPreds = matrix(ncol = 5)
+    allTrashPreds = data.frame(allTrashPreds)
+    colnames(allTrashPreds) = c(1,2,3,4,5)
+    avgConfidence = NA
     for(i in 1:nforests){
       currRF = rfKList[[k]][[i]]
-      predictions = predict(currRF, reducedDFTrash, predict.all = TRUE, norm.votes = TRUE, type="prob")
-      allTrashPreds = rbind(allTrashPreds, predictions$aggregate)
+      predictions = predict(currRF, predictDF, predict.all = TRUE, norm.votes = TRUE, type="prob")
+      if(i == 1){
+        avgConfidence = predictions$aggregate
+      } else {
+        avgConfidence = avgConfidence+predictions$aggregate
+      }
     }
+    avgConfidence = avgConfidence/nforests
+    allTrashPredsList[[k]] = avgConfidence
   }
-  allTrashPreds = allTrashPreds[-1,]
-  maxvals = c()
-  for(i in 1:nrow(allTrashPreds)){
-    val = max(allTrashPreds[i,1:5])
-    maxvals = c(maxvals,val)
+  avgMat = as.matrix(allTrashPredsList[[1]])
+  for(i in 2:length(allTrashPredsList)){
+    avgMat = avgMat + as.matrix(allTrashPredsList[[i]])
   }
-  allTrashPreds = cbind(allTrashPreds, maxvals)
-  p = ggplot(allTrashPreds, aes(x=maxvals)) +
-    geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
-    ggtitle("Confidence in RF: Trash Set") +
-    theme(plot.title = element_text(hjust = 0.5),
-          title = element_text(size=20)) +
-    scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
-    theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
-          axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
-          axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
-          axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
-  jpeg("Plots/RF_TrashSet_Confidences.jpeg", width = 1080, height = 720)
-  print(p)
-  dev.off()
+  avgMat = avgMat/validationSize
   
-  p = ggplot(bjoernFile, aes(x=maxVal)) +
+  maxVals = c()
+  clusters = c()
+  for(i in 1:nrow(avgMat)){
+    maxV = max(avgMat[i,])[1]
+    maxVals = c(maxVals, maxV)
+    clus = which(max(avgMat[i,])[1] == avgMat[i,])[1]
+    clusters = c(clusters, clus)
+  }
+  
+  confidencesDF = data.frame(maxvalsTrash = maxVals)
+  
+  title = paste("Confidence in RF: Trash Set, Features ",nFeatures,sep="")
+  p = ggplot(confidencesDF, aes(x=maxvalsTrash)) +
     geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
-    ggtitle("Confidence in RF: All Validation Sets") +
+    ggtitle(title) +
     theme(plot.title = element_text(hjust = 0.5),
-          title = element_text(size=20)) +
+          title = element_text(size=18)) +
     scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
     theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
           axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
           axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
           axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
-  jpeg("Plots/RF_ValidationSets_Confidences.jpeg", width = 1080, height = 720)
+  
+  fn = paste("Plots/RF_TrashSet_Confidences_Features",nFeatures,".jpeg",sep="")
+  jpeg(fn, width = 1080, height = 720)
   print(p)
   dev.off()
-}
+    
+    clus1Order = c("SV.BCL6", "BCL10", "TNFAIP3", "UBE2A", "CD70", "B2M", "NOTCH2", "TMEM30A", "FAS",
+                   "X5p.AMP", "SV.TP63", "ZEB2", "HLA.B", "SPEN", "SV.CD274.PDCD1LG2")
+    clus3Order = c("TP53", "X17p.DEL", "X17p11.2.DEL", "X21q.AMP", "X9p21.3.DEL", "X9q21.13.DEL",
+                   "X4q35.1.DEL","X1p31.1.DEL", "X1p36.11.DEL", "X1p13.1.DEL", "X4q21.22.DEL", "X14q32.31.DEL",
+                   "X3p21.31.DEL", "X2p16.1.AMP", "X16q12.1.DEL", "X1p36.32.DEL", "X3q28.DEL", "X1q23.3.AMP" ,
+                   "X18q23.DEL", "X8q24.22.AMP", "X17q24.3.AMP", "X13q14.2.DEL", "X19p13.3.DEL", "X5q.AMP",
+                   "X11q.AMP", "X13q31.3.AMP", "X6p.AMP", "X2q22.2.DEL", "X12p13.2.DEL", "X6q.DEL",
+                   "X3q28.AMP", "X11q23.3.AMP", "X1q42.12.DEL", "X8q12.1.DEL", "X19q13.32.DEL", "X10q23.31.DEL")
+    
+    clus2Order = c("BCL2", "SV.BCL2", "CREBBP", "EZH2", "KMT2D", "TNFRSF14", "HVCN1", "IRF8", "GNA13", "MEF2B",
+                   "PTEN")
+    
+    clus5Order = c("SGK1", "HIST1H1E", "NFKBIE","BRAF", "CD83", "NFKBIA", "CD58", "HIST1H2BC", "STAT3",
+                   "HIST1H1C", "ZFP36L1", "KLHL6", "HIST1H1D", "HIST1H1B", "ETS1", "TOX", "HIST1H2AM",
+                   "HIST1H2BK", "RHOA", "ACTB", "LTB", "SF3B1", "CARD11", "HIST1H2AC")
+    
+    clus4Order = c("X18q.AMP", "X13q.AMP", "CD79B", "X3p.AMP", "MYD88", "ETV6", "X18p.AMP", "PIM1", 
+                   "X17q25.1.DEL", "TBL1XR1", "X19q13.42.AMP", "GRHPR", "ZC3H12A", "X19p13.2.DEL",
+                   "X19q.AMP", "HLA.A", "PRDM1", "BTG1", "X18q21.33.BCL2..AMP", "SV.MYC")
+    
+    rownames(fullDFTrash) = make.names(rep(paste( LETTERS, "row", sep =""), length.out=nrow(fullDFTrash)), unique = TRUE)
+    clusterConfidencesDF = data.frame(confidence = maxVals, predictedCluster = clusters)
+    rownames(clusterConfidencesDF) = rownames(fullDFTrash)
+    colnames(clusterConfidencesDF)[1] = "confidence"
+    #subset by confidence first
+    highConfidencesDF = clusterConfidencesDF[order(clusterConfidencesDF$confidence),]
+    highConfidencesDF = highConfidencesDF[(nrow(highConfidencesDF)-499):(nrow(highConfidencesDF)),]
+    highConfidencesDF = highConfidencesDF[order(highConfidencesDF$predictedCluster,
+                                                highConfidencesDF$confidence),]
+    
+    sortedOrder = rownames(highConfidencesDF)
+    
+    featureOrder = toupper(c(clus1Order, clus2Order, clus3Order, clus4Order, clus5Order))
+    heatmapDF = fullDFTrash[sortedOrder,featureOrder]
+    heatmapDF = heatmapDF[,rev(colnames(heatmapDF))]
+    #heatmapDF = cbind(highConfidencesDF$predictedCluster, heatmapDF)
+    #colnames(heatmapDF)[1] = "clusters"
+    heatmapDFMatrix = as.matrix(heatmapDF)
+    
+    melted = melt(heatmapDFMatrix)
+    c1 = which(highConfidencesDF$predictedCluster == 1)[1]
+    c2 = which(highConfidencesDF$predictedCluster == 2)[1]
+    c3 = which(highConfidencesDF$predictedCluster == 3)[1]
+    c4 = which(highConfidencesDF$predictedCluster == 4)[1]
+    c5 = which(highConfidencesDF$predictedCluster == 5)[1]
+    # 
+    b1 = rownames(heatmapDF)[c1]
+    b2 = rownames(heatmapDF)[c2]
+    b3 = rownames(heatmapDF)[c3]
+    b4 = rownames(heatmapDF)[c4]
+    b5 = rownames(heatmapDF)[c5]
+    
+    y1 = length(featureOrder)-length(clus1Order)
+    y2 = y1-length(clus2Order)
+    y3 = y2-length(clus3Order)
+    y4 = y3-length(clus4Order)
+    title = paste("RF High Confidence top 500, Total Count: ",nrow(highConfidencesDF),", Features",nFeatures,sep="")
+    p1 = ggplot(data = melted, aes(x=Var1, y=Var2, fill=value)) + 
+      geom_tile(colour = "white") + scale_fill_gradient(low = "white", high = "steelblue") +
+      scale_x_discrete(expand=c(0,0), breaks=c(b1,b2,b3,b4,b5)
+                       , labels = c("C1", "C2", "C3", "C4", "C5")) +
+      geom_vline(xintercept=c(c2,c3,c4,c5), linetype="solid") +
+      geom_hline(yintercept=c(y1,y2,y3,y4), linetype = "solid") +
+      ggtitle(title)+
+      theme(plot.title = element_text(hjust = 0.5),
+            title = element_text(size=20))
+    
+    fn = paste("Plots/TrashHeatmapRF_HC_Features",nFeatures,".jpeg", sep="")
+    jpeg(fn, width = 1080, height = 720)
+    print(p1)
+    dev.off()
+    
+    
+    lowConfidencesDF = clusterConfidencesDF[order(clusterConfidencesDF$confidence),]
+    lowConfidencesDF = lowConfidencesDF[1:500,]
+    lowConfidencesDF = lowConfidencesDF[order(lowConfidencesDF$predictedCluster,
+                                              lowConfidencesDF$confidence),]
+    
+    sortedOrder = rownames(lowConfidencesDF)
+    
+    featureOrder = toupper(c(clus1Order, clus2Order, clus3Order, clus4Order, clus5Order))
+    heatmapDF = fullDFTrash[sortedOrder,featureOrder]
+    heatmapDF = heatmapDF[,rev(colnames(heatmapDF))]
+    #heatmapDF = cbind(lowConfidencesDF$predictedCluster, heatmapDF)
+    #colnames(heatmapDF)[1] = "clusters"
+    heatmapDFMatrix = as.matrix(heatmapDF)
+    
+    melted = melt(heatmapDFMatrix)
+    c1 = which(lowConfidencesDF$predictedCluster == 1)[1]
+    c2 = which(lowConfidencesDF$predictedCluster == 2)[1]
+    c3 = which(lowConfidencesDF$predictedCluster == 3)[1]
+    c4 = which(lowConfidencesDF$predictedCluster == 4)[1]
+    c5 = which(lowConfidencesDF$predictedCluster == 5)[1]
+    # 
+    b1 = rownames(heatmapDF)[c1]
+    b2 = rownames(heatmapDF)[c2]
+    b3 = rownames(heatmapDF)[c3]
+    b4 = rownames(heatmapDF)[c4]
+    b5 = rownames(heatmapDF)[c5]
+    
+    y1 = length(featureOrder)-length(clus1Order)
+    y2 = y1-length(clus2Order)
+    y3 = y2-length(clus3Order)
+    y4 = y3-length(clus4Order)
+    title = paste("RF Low Confidence Bottom 500, Total Count: ",nrow(lowConfidencesDF),", Features",nFeatures,sep="")
+    p1 = ggplot(data = melted, aes(x=Var1, y=Var2, fill=value)) + 
+      geom_tile(colour = "white") + scale_fill_gradient(low = "white", high = "steelblue") +
+      scale_x_discrete(expand=c(0,0), breaks=c(b1,b2,b3,b4,b5)
+                       , labels = c("C1", "C2", "C3", "C4", "C5")) +
+      geom_vline(xintercept=c(c2,c3,c4,c5), linetype="solid") +
+      geom_hline(yintercept=c(y1,y2,y3,y4), linetype = "solid") +
+      ggtitle(title)+
+      theme(plot.title = element_text(hjust = 0.5),
+            title = element_text(size=20))
+    
+    fn = paste("Plots/TrashHeatmapRF_LC_Features",nFeatures,".jpeg", sep="")
+    jpeg(fn, width = 1080, height = 720)
+    print(p1)
+    dev.off()
+  }

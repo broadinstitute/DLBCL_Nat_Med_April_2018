@@ -1,5 +1,5 @@
 rm(list = ls())
-seed = 100
+seed = 200
 set.seed(seed)
 source("src/LoadLibraries.R")
 source("src/GenerateFullDF2.R")
@@ -72,44 +72,71 @@ for(i in 1:ncol(fullDF)){
 
 mainDF = data.frame()
 
+#rewrote this because it appears it's biased somehow...
+# for(i in 1:sampleSize){
+#   if((i %% (sampleSize/10)) == 0){
+#     print(i)
+#   }
+#   numMuts = idxs[[i]]
+#   currMuts = 0
+#   shuffleOrder = sample(seq(1:length(featureOrder)))
+#   shuffledMutationFreqs = mutationFreqs[shuffleOrder]
+#   shuffledFeatureOrder = featureOrder[shuffleOrder]
+#   currSample = matrix(0, nrow=1, ncol=ncol(fullDF))
+#   currSample = data.frame(currSample)
+#   colnames(currSample) = shuffledFeatureOrder
+# 
+#   featureIndex = 1
+#   while(currMuts < numMuts){
+#     currFeature = shuffledFeatureOrder[[featureIndex]]
+#     currProbs = as.vector(shuffledMutationFreqs[[featureIndex]])
+#     possibleValues = as.integer(names(shuffledMutationFreqs[[featureIndex]]))
+#     currentCall = sample(possibleValues, 1, prob = currProbs, replace = TRUE)
+#     if(currentCall != 0){
+#       if(currSample[,featureIndex] == 0){
+#         currMuts = currMuts + 1
+#         currSample[,featureIndex] = currentCall
+#       }
+#       if(featureIndex == length(shuffledFeatureOrder)){
+#         featureIndex = 1
+#       } else {
+#         featureIndex = featureIndex + 1
+#       }
+#     } else {
+#       if(featureIndex == length(shuffledFeatureOrder)){
+#         featureIndex = 1
+#       } else {
+#         featureIndex = featureIndex + 1
+#       }
+#     }
+#   }
+#   currSample = currSample[featureOrder]
+#   mainDF = rbind(mainDF, currSample)
+# }
+
 for(i in 1:sampleSize){
   if((i %% (sampleSize/10)) == 0){
     print(i)
   }
   numMuts = idxs[[i]]
   currMuts = 0
-  shuffleOrder = sample(seq(1:length(featureOrder)))
-  shuffledMutationFreqs = mutationFreqs[shuffleOrder]
-  shuffledFeatureOrder = featureOrder[shuffleOrder]
   currSample = matrix(0, nrow=1, ncol=ncol(fullDF))
   currSample = data.frame(currSample)
-  colnames(currSample) = shuffledFeatureOrder
+  colnames(currSample) = featureOrder
   
-  featureIndex = 1
   while(currMuts < numMuts){
-    currFeature = shuffledFeatureOrder[[featureIndex]]
-    currProbs = as.vector(shuffledMutationFreqs[[featureIndex]])
-    possibleValues = as.integer(names(shuffledMutationFreqs[[featureIndex]]))
+    randomIndex = sample(1:ncol(currSample),1)
+    currFeature = featureOrder[[randomIndex]]
+    currProbs = as.vector(mutationFreqs[[randomIndex]])
+    possibleValues = as.integer(names(mutationFreqs[[randomIndex]]))
     currentCall = sample(possibleValues, 1, prob = currProbs, replace = TRUE)
     if(currentCall != 0){
-      if(currSample[,featureIndex] == 0){
+      if(currSample[,randomIndex] == 0){
         currMuts = currMuts + 1
-        currSample[,featureIndex] = currentCall
-      }
-      if(featureIndex == length(shuffledFeatureOrder)){
-        featureIndex = 1
-      } else {
-        featureIndex = featureIndex + 1
-      }
-    } else {
-      if(featureIndex == length(shuffledFeatureOrder)){
-        featureIndex = 1
-      } else {
-        featureIndex = featureIndex + 1
+        currSample[,randomIndex] = currentCall
       }
     }
   }
-  currSample = currSample[featureOrder]
   mainDF = rbind(mainDF, currSample)
 }
 
@@ -127,14 +154,14 @@ for(i in 1:ncol(fullDF)){
     xlab("Mutation Value")+
     ylab("Frequency")
   
-  fn = paste("Plots/FeatureDistributions/Seed",seed,"_",colnames(fullDF)[[i]],".jpeg",sep="")
+  fn = paste("Plots/FeatureDistributions/Seed",seed,"_Fixed_",colnames(fullDF)[[i]],".jpeg",sep="")
   jpeg(fn)
   print(p)
   dev.off()
 }
 
 fn = "DataTables/junkSet"
-fn = paste(fn, "_seed", seed, sep="")
+fn = paste(fn, "_seed_Fixed", seed, sep="")
 write.table(mainDF, fn, sep="\t")
 
 

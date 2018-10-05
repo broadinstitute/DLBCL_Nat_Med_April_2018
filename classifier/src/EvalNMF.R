@@ -1,15 +1,20 @@
 
 rm(list = ls())
+set.seed(200)
 knitr::opts_chunk$set(echo = TRUE)
 toeval = TRUE
 useSV = TRUE
 useCNA = TRUE
 GD = TRUE
 fixedValidationSets = FALSE
-fullFeatures = FALSE
-#set.seed(123)
-#set.seed(1680)
+fullFeatures = TRUE
+if(fullFeatures){
+  nFeatures = 161
+} else {
+  nFeatures = 21
+}
 
+source("src/LoadLibraries.R")
 source("src/GenerateLabels.R")
 source("src/ConstructReducedFeatureMatrix.R")
 source("src/GenerateTestTrainSets.R")
@@ -87,6 +92,8 @@ rownames(lowerLabels) = tolower(rownames(lowerLabels))
 Wmats = c()
 Hnorms = data.frame(nrow=5)
 orderings = c()
+allTrashSetConfidences = c()
+avgMat = NA
 
 for(k in 1:validationSize){
   trainTableFold = trainTable[!(rownames(trainTable) %in% validationSets[[k]]),]
@@ -96,14 +103,13 @@ for(k in 1:validationSize){
   write.table(trainTableFold, file="DataTables/currentFoldReducedTrain.txt", sep="\t", row.names = TRUE, col.names = TRUE)
   write.table(validationTableFold, file="DataTables/currentFoldReducedValidation.txt", sep='\t', row.names = TRUE, col.names = TRUE)
   source("src/get.classifier_Tim.R")
-  g1Fixed = reorient(g1, labels)
-  positions = c(g1Fixed[[2]],g1Fixed[[3]],g1Fixed[[4]],g1Fixed[[5]],g1Fixed[[6]])
+  g1Fixed = reorient(g1, W0, !fullFeatures)
+  clus1Position = g1Fixed[[2]]
+  clus2Position = g1Fixed[[3]]
+  clus3Position = g1Fixed[[4]]
+  clus4Position = g1Fixed[[5]]
+  clus5Position = g1Fixed[[6]]
   g1Fixed = g1Fixed[[1]]
-  clus1Position = which(positions == 1)
-  clus2Position = which(positions == 2)
-  clus3Position = which(positions == 3)
-  clus4Position = which(positions == 4)
-  clus5Position = which(positions == 5)
   llSub = lowerLabels[rownames(lowerLabels) %in% rownames(g1Fixed),]
   llSub = llSub[rownames(g1Fixed),]
   #print(table(g1Fixed$g1 == llSub$cluster))
@@ -114,7 +120,192 @@ for(k in 1:validationSize){
   rownames(H1.norm.reoriented) = c(1,2,3,4,5)
   Hnorms = cbind(Hnorms, H1.norm.reoriented)
   orderings = c(orderings, rownames(g1Fixed))
+  
+  evaluateTrashSet = TRUE
+  if(evaluateTrashSet){
+    source("src/GenerateTrashReduced.R")
+    if(fullFeatures){
+      predictDF = t(fullDFTrash)
+    } else {
+      predictDF = t(reducedDFTrash)
+    }
+    trashRes <- NMF.W(as.matrix(predictDF),as.matrix(W0),tol,K)
+    H1Trash <- trashRes[[2]] #### H1Trash is an association of new samples to clustering
+    H1Trash.eps = apply(H1Trash,2,function(x) if(sum(x) == 0){x = x+.1} else {x})
+    H1Trash.norm <- apply(H1Trash.eps,2,function(x) x/sum(x))
+    H1Trash.norm = H1Trash.norm[c(clus1Position,clus2Position,clus3Position,clus4Position,clus5Position),]
+    H1Trash.norm = as.matrix(H1Trash.norm)
+    
+    maxvalsTrash = c()
+    clusters = c()
+    for(i in 1:ncol(H1Trash.norm)){
+      val = max(H1Trash.norm[,i])
+      clus = which(max(H1Trash.norm[,i]) == H1Trash.norm[,i])
+      maxvalsTrash = c(maxvalsTrash, val)
+      clusters = c(clusters, clus)
+    }
+    maxvalsTrash = data.frame(maxvalsTrash)
+    allTrashSetConfidences = c(allTrashSetConfidences, maxvalsTrash)
+    if(k == 1){
+      avgMat = H1Trash.norm
+    } else {
+      avgMat = avgMat + H1Trash.norm
+    }
+  }
 }
+
+avgMat = avgMat/validationSize
+avgMat = t(avgMat)
+maxVals = c()
+cluster = c()
+for(i in 1:nrow(avgMat)){
+  maxVal = max(avgMat[i,1:5])
+  clus = which(avgMat[i,1:5] == maxVal)
+  maxVals = c(maxVals, maxVal)
+  cluster = c(cluster, clus)
+}
+
+avgMat = cbind(avgMat, maxVals, cluster)
+
+if(evaluateTrashSet){
+  allTrashSetConfidences = data.frame(avgMat[,"maxVals"])
+  colnames(allTrashSetConfidences)[1] = "confidences"
+  p = ggplot(allTrashSetConfidences, aes(x=confidences)) +
+    geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
+    ggtitle(paste("Confidence in NMF: Null Set, Features ",nFeatures, sep="")) +
+    theme(plot.title = element_text(hjust = 0.5),
+          title = element_text(size=20)) +
+    scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
+    theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
+          axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
+          axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
+          axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
+  fn = paste("Plots/NMF_TrashSet_Confidences_Features",nFeatures,".jpeg")
+  jpeg(fn, width = 1080, height = 720)
+  print(p)
+  dev.off()
+  
+  clus1Order = c("SV.BCL6", "BCL10", "TNFAIP3", "UBE2A", "CD70", "B2M", "NOTCH2", "TMEM30A", "FAS",
+                 "X5p.AMP", "SV.TP63", "ZEB2", "HLA.B", "SPEN", "SV.CD274.PDCD1LG2")
+  clus3Order = c("TP53", "X17p.DEL", "X17p11.2.DEL", "X21q.AMP", "X9p21.3.DEL", "X9q21.13.DEL",
+                 "X4q35.1.DEL","X1p31.1.DEL", "X1p36.11.DEL", "X1p13.1.DEL", "X4q21.22.DEL", "X14q32.31.DEL",
+                 "X3p21.31.DEL", "X2p16.1.AMP", "X16q12.1.DEL", "X1p36.32.DEL", "X3q28.DEL", "X1q23.3.AMP" ,
+                 "X18q23.DEL", "X8q24.22.AMP", "X17q24.3.AMP", "X13q14.2.DEL", "X19p13.3.DEL", "X5q.AMP",
+                 "X11q.AMP", "X13q31.3.AMP", "X6p.AMP", "X2q22.2.DEL", "X12p13.2.DEL", "X6q.DEL",
+                 "X3q28.AMP", "X11q23.3.AMP", "X1q42.12.DEL", "X8q12.1.DEL", "X19q13.32.DEL", "X10q23.31.DEL")
+  
+  clus2Order = c("BCL2", "SV.BCL2", "CREBBP", "EZH2", "KMT2D", "TNFRSF14", "HVCN1", "IRF8", "GNA13", "MEF2B",
+                 "PTEN")
+  
+  clus5Order = c("SGK1", "HIST1H1E", "NFKBIE","BRAF", "CD83", "NFKBIA", "CD58", "HIST1H2BC", "STAT3",
+                 "HIST1H1C", "ZFP36L1", "KLHL6", "HIST1H1D", "HIST1H1B", "ETS1", "TOX", "HIST1H2AM",
+                 "HIST1H2BK", "RHOA", "ACTB", "LTB", "SF3B1", "CARD11", "HIST1H2AC")
+  
+  clus4Order = c("X18q.AMP", "X13q.AMP", "CD79B", "X3p.AMP", "MYD88", "ETV6", "X18p.AMP", "PIM1", 
+                 "X17q25.1.DEL", "TBL1XR1", "X19q13.42.AMP", "GRHPR", "ZC3H12A", "X19p13.2.DEL",
+                 "X19q.AMP", "HLA.A", "PRDM1", "BTG1", "X18q21.33.BCL2..AMP", "SV.MYC")
+  
+  rownames(fullDFTrash) = make.names(rep(paste( LETTERS, "row", sep =""), length.out=nrow(fullDFTrash)), unique = TRUE)
+  clusterConfidencesDF = data.frame(confidence = allTrashSetConfidences$confidences, predictedCluster = cluster)
+  rownames(clusterConfidencesDF) = rownames(fullDFTrash)
+  colnames(clusterConfidencesDF)[1] = "confidence"
+  #subset by confidence first
+  highConfidencesDF = clusterConfidencesDF[order(clusterConfidencesDF$confidence),]
+  highConfidencesDF = highConfidencesDF[(nrow(highConfidencesDF)-500):(nrow(highConfidencesDF)),]
+  highConfidencesDF = highConfidencesDF[order(highConfidencesDF$predictedCluster,
+                                              highConfidencesDF$confidence),]
+  
+  sortedOrder = rownames(highConfidencesDF)
+  
+  featureOrder = toupper(c(clus1Order, clus2Order, clus3Order, clus4Order, clus5Order))
+  heatmapDF = fullDFTrash[sortedOrder,featureOrder]
+  heatmapDF = heatmapDF[,rev(colnames(heatmapDF))]
+  #heatmapDF = cbind(highConfidencesDF$predictedCluster, heatmapDF)
+  #colnames(heatmapDF)[1] = "clusters"
+  heatmapDFMatrix = as.matrix(heatmapDF)
+  
+  melted = melt(heatmapDFMatrix)
+  c1 = which(highConfidencesDF$predictedCluster == 1)[1]
+  c2 = which(highConfidencesDF$predictedCluster == 2)[1]
+  c3 = which(highConfidencesDF$predictedCluster == 3)[1]
+  c4 = which(highConfidencesDF$predictedCluster == 4)[1]
+  c5 = which(highConfidencesDF$predictedCluster == 5)[1]
+  # 
+  b1 = rownames(heatmapDF)[c1]
+  b2 = rownames(heatmapDF)[c2]
+  b3 = rownames(heatmapDF)[c3]
+  b4 = rownames(heatmapDF)[c4]
+  b5 = rownames(heatmapDF)[c5]
+  
+  y1 = length(featureOrder)-length(clus1Order)
+  y2 = y1-length(clus2Order)
+  y3 = y2-length(clus3Order)
+  y4 = y3-length(clus4Order)
+  title = paste("High in NMF: Null Set, Top 500, Features ",nFeatures,sep="")
+  p1 = ggplot(data = melted, aes(x=Var1, y=Var2, fill=value)) + 
+    geom_tile(colour = "white") + scale_fill_gradient(low = "white", high = "steelblue") +
+    scale_x_discrete(expand=c(0,0), breaks=c(b1,b2,b3,b4,b5)
+                     , labels = c("C1", "C2", "C3", "C4", "C5")) +
+    geom_vline(xintercept=c(c2,c3,c4,c5), linetype="solid") +
+    geom_hline(yintercept=c(y1,y2,y3,y4), linetype = "solid") +
+    ggtitle(title) +
+    theme(plot.title = element_text(hjust = 0.5),
+          title = element_text(size=18))
+  
+  fn = paste("Plots/TrashHeatmapNMF_HC_Features",nFeatures,".jpeg", sep="")
+  jpeg(fn, width = 1080, height = 720)
+  print(p1)
+  dev.off()
+  
+  
+  lowConfidencesDF = clusterConfidencesDF[order(clusterConfidencesDF$confidence),]
+  lowConfidencesDF = lowConfidencesDF[1:500,]
+  lowConfidencesDF = lowConfidencesDF[order(lowConfidencesDF$predictedCluster,
+                                            lowConfidencesDF$confidence),]
+  
+  sortedOrder = rownames(lowConfidencesDF)
+  
+  featureOrder = toupper(c(clus1Order, clus2Order, clus3Order, clus4Order, clus5Order))
+  heatmapDF = fullDFTrash[sortedOrder,featureOrder]
+  heatmapDF = heatmapDF[,rev(colnames(heatmapDF))]
+  #heatmapDF = cbind(lowConfidencesDF$predictedCluster, heatmapDF)
+  #colnames(heatmapDF)[1] = "clusters"
+  heatmapDFMatrix = as.matrix(heatmapDF)
+  
+  melted = melt(heatmapDFMatrix)
+  c1 = which(lowConfidencesDF$predictedCluster == 1)[1]
+  c2 = which(lowConfidencesDF$predictedCluster == 2)[1]
+  c3 = which(lowConfidencesDF$predictedCluster == 3)[1]
+  c4 = which(lowConfidencesDF$predictedCluster == 4)[1]
+  c5 = which(lowConfidencesDF$predictedCluster == 5)[1]
+  # 
+  b1 = rownames(heatmapDF)[c1]
+  b2 = rownames(heatmapDF)[c2]
+  b3 = rownames(heatmapDF)[c3]
+  b4 = rownames(heatmapDF)[c4]
+  b5 = rownames(heatmapDF)[c5]
+  
+  y1 = length(featureOrder)-length(clus1Order)
+  y2 = y1-length(clus2Order)
+  y3 = y2-length(clus3Order)
+  y4 = y3-length(clus4Order)
+  title = paste("Low Confidence in NMF: Null Set, Bottom 500, Features ",nFeatures,sep="")
+  p1 = ggplot(data = melted, aes(x=Var1, y=Var2, fill=value)) + 
+    geom_tile(colour = "white") + scale_fill_gradient(low = "white", high = "steelblue") +
+    scale_x_discrete(expand=c(0,0), breaks=c(b1,b2,b3,b4,b5)
+                     , labels = c("C1", "C2", "C3", "C4", "C5")) +
+    geom_vline(xintercept=c(c2,c3,c4,c5), linetype="solid") +
+    geom_hline(yintercept=c(y1,y2,y3,y4), linetype = "solid") +
+    ggtitle(title) +
+    theme(plot.title = element_text(hjust = 0.5),
+          title = element_text(size=18))
+  
+  fn = paste("Plots/TrashHeatmapNMF_LC_Features",nFeatures,".jpeg", sep="")
+  jpeg(fn, width = 1080, height = 720)
+  print(p1)
+  dev.off()
+}
+
 Hnorms = Hnorms[,-1]
 toBind1 = apply(Hnorms, 2, function(x) max(x))
 toBind2 = apply(Hnorms, 2, function(x) which.max(x))
@@ -318,50 +509,24 @@ if(fullFeatures){
 }
 filename = paste(filename, ".jpeg", sep = "")
 
-evaluateTrashSet = TRUE
-if(evaluateTrashSet){
-  source("src/GenerateTrashReduced.R")
-  reducedDFTrash = t(reducedDFTrash)
-  trashRes <- NMF.W(as.matrix(reducedDFTrash),as.matrix(W0),tol,K)
-  H1Trash <- trashRes[[2]] #### H1Trash is an association of new samples to clustering
-  H1Trash.eps = apply(H1Trash,2,function(x) if(sum(x) == 0){x = x+.1} else {x})
-  H1Trash.norm <- apply(H1Trash.eps,2,function(x) x/sum(x))
-  maxvalsTrash = c()
-  for(i in 1:ncol(H1Trash.norm)){
-    val = max(H1Trash.norm[,i])
-    maxvalsTrash = c(maxvalsTrash, val)
-  }
-  maxvalsTrash = data.frame(maxvalsTrash)
-  p = ggplot(maxvalsTrash, aes(x=maxvalsTrash)) +
-    geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
-    ggtitle("Confidence in NMF: Trash Set") +
-    theme(plot.title = element_text(hjust = 0.5),
-          title = element_text(size=20)) +
-    scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
-    theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
-          axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
-          axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
-          axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
-  jpeg("Plots/NMF_TrashSet_Confidences.jpeg", width = 1080, height = 720)
-  print(p)
-  dev.off()
-  
-  upper = 15
-  p = ggplot(bjoernFile, aes(x=maxVal)) +
-    geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
-    ggtitle("Confidence in NMF: All Validation Sets") +
-    theme(plot.title = element_text(hjust = 0.5),
-          title = element_text(size=20)) +
-    scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
-    scale_y_continuous(limits = c(0,upper), breaks = seq(0,upper, by=1)) +
-    theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
-          axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
-          axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
-          axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
-  jpeg("Plots/NMF_ValidationSets_Confidences.jpeg", width = 1080, height = 720)
-  print(p)
-  dev.off()
-}
 #jpeg(filename, width = 1920, height = 1080)
 #print(p1)
 #dev.off()
+
+upper = 15
+title = paste("Confidence in NMF: All Validation Sets", " Features ",nFeatures, sep="")
+p = ggplot(bjoernFile, aes(x=maxVal)) +
+  geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
+  ggtitle(title) +
+  theme(plot.title = element_text(hjust = 0.5),
+        title = element_text(size=20)) +
+  scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
+  scale_y_continuous(limits = c(0,upper), breaks = seq(0,upper, by=1)) +
+  theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
+        axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
+        axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
+        axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
+fn = paste("Plots/NMF_ValidationSets_Confidences_Features",nFeatures,".jpeg")
+jpeg(fn, width = 1080, height = 720)
+print(p)
+dev.off()

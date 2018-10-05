@@ -1,4 +1,5 @@
-fullDFTrash = read.csv("DataTables/junkSet_seed100", header = TRUE, sep="\t")
+rm(list = ls())
+fullDFTrash = read.csv("DataTables/junkSet_seed_Fixed200", header = TRUE, sep="\t")
 fullDFTrashBinary = ifelse(fullDFTrash > 0, 1, 0)
 
 PValsAll = vector("list", length = ncol(fullDFTrashBinary))
@@ -32,7 +33,7 @@ for(i in 1:length(PValsAll)){
           axis.title.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=0,face="plain"),
           axis.title.y = element_text(colour="grey20",size=20,angle=90,hjust=.5,vjust=.5,face="plain"))
   
-  fn = paste("Plots/PValuesNullModel/PValues_",feature,".jpeg",sep="")
+  fn = paste("Plots/PValuesNullModel/Version2_PValues_",feature,".jpeg",sep="")
   jpeg(fn, width = 1080, height = 720)
   print(p)
   dev.off()

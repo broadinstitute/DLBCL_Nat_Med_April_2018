@@ -7,7 +7,7 @@
 useSV = TRUE
 useCNA = TRUE
 GD = TRUE
-fullDFTrash = read.csv("DataTables/junkSet_seed100", header = TRUE, sep="\t")
+fullDFTrash = read.csv("DataTables/trashV2.txt", header = TRUE, sep="\t")
 
 c2F = toupper(c("X17p.DEL", "X21q.AMP", "X9p21.3.DEL", "X9q21.13.DEL",
                 "X4q35.1.DEL","X1p31.1.DEL", "X1p36.11.DEL", "X1p13.1.DEL", "X4q21.22.DEL", "X14q32.31.DEL",

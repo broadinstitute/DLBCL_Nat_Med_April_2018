@@ -12,7 +12,8 @@ useCNA = TRUE
 GD = FALSE
 useProbs = TRUE
 fixedValidationSets = FALSE
-fullFeatures = TRUE
+fullFeatures = FALSE
+useReduced = !fullFeatures
 
 filename = "ANN/WrittenFiles/4foldNN"
 if(downSample){
@@ -242,11 +243,30 @@ filename = paste(filename, ".jpeg", sep="")
 
 evaluateTrashSet = TRUE
 if(evaluateTrashSet){
+  if(useReduced){
+    nFeatures = 21
+  } else {
+    nFeatures = 161
+  }
   source("src/GenerateTrashReduced.R")
   write.table(reducedDFTrash, "ANN/DataTables/reducedDFTrash.tsv", row.names = TRUE, col.names = TRUE, sep = '\t')
+  write.table(fullDFTrash, "ANN/DataTables/trashV2.txt", row.names = TRUE, col.names = TRUE, sep="\t")
   setwd("ANN")
-  system("/Users/twood/anaconda3/bin/python testTrashSet.py")
-  nnTrashDF = read.csv("WrittenFiles/NN_TrashSet_Confidences.tsv", header = TRUE, sep='\t')
+  command = "/Users/twood/anaconda3/bin/python testTrashSet.py"
+  if(useReduced){
+    command = paste(command, "False", sep=" ")
+  } else {
+    command = paste(command, "True", sep=" ")
+  }
+  system(command)
+  outfile = "WrittenFiles/NN_TrashSet_Confidences"
+  if(useReduced){
+    outfile = paste(outfile, "_features21.tsv", sep="")
+  } else {
+    outfile = paste(outfile, "_features161.tsv", sep="")
+  }
+  
+  nnTrashDF = read.csv(outfile, header = TRUE, sep='\t')
   nnTrashDF = nnTrashDF[,-1]
   setwd("..")
   
@@ -256,20 +276,6 @@ if(evaluateTrashSet){
     maxvalsTrash = c(maxvalsTrash, val)
   }
   nnTrashDF = cbind(nnTrashDF, maxvalsTrash)
-  
-  p = ggplot(nnTrashDF, aes(x=maxvalsTrash)) +
-    geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
-    ggtitle("Confidence in NN: Trash Set") +
-    theme(plot.title = element_text(hjust = 0.5),
-          title = element_text(size=20)) +
-    scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
-    theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
-          axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
-          axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
-          axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
-  jpeg("Plots/NN_TrashSet_Confidences.jpeg", width = 1080, height = 720)
-  print(p)
-  dev.off()
   
   p = ggplot(bjoernFile, aes(x=maxVal)) +
     geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
@@ -281,9 +287,168 @@ if(evaluateTrashSet){
           axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
           axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
           axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
-  jpeg("Plots/NN_ValidationSets_Confidences.jpeg", width = 1080, height = 720)
+  fn = "Plots/NN_ValidationSets_Confidences"
+  if(useReduced){
+    fn = paste(fn, "_21F.jpeg",sep="")
+  } else {
+    fn = paste(fn, "161F.jpeg",sep="")
+  }
+  jpeg(fn, width = 1080, height = 720)
   print(p)
   dev.off()
 }
 
 
+net1Confidences = as.matrix(nnTrashDF[1:5000,-6])
+net2Confidences = as.matrix(nnTrashDF[5001:10000,-6])
+net3Confidences = as.matrix(nnTrashDF[10001:15000,-6])
+net4Confidences = as.matrix(nnTrashDF[15001:20000,-6])
+
+avgMat = (net1Confidences+net2Confidences+net3Confidences+net4Confidences)/4
+
+maxVals = c()
+for(i in 1:nrow(avgMat)){
+  maxVal = max(avgMat[i,])
+  maxVals = c(maxVals, maxVal)
+}
+
+clusters = c()
+for(i in 1:nrow(avgMat)){
+  clus = which(max(avgMat[i,1:5]) == avgMat[i,1:5])
+  clusters = c(clusters, clus)
+}
+
+rownames(fullDFTrash) = make.names( rep(paste( LETTERS, "row", sep =""), 
+                                        length.out=nrow(fullDFTrash)), 
+                                    unique = TRUE)
+avgMat = data.frame(avgMat)
+avgMat$cluster = clusters
+avgMat$maxVal = maxVals
+rownames(avgMat) = rownames(fullDFTrash)
+
+
+avgMat = avgMat[order(avgMat$maxVal),]
+
+highConf = avgMat[avgMat$maxVal > .85,]
+lowConf = avgMat[avgMat$maxVal < .40,]
+
+highConf = highConf[order(highConf$cluster,
+                          highConf$maxVal),]
+lowConf = lowConf[order(lowConf$cluster,
+                        lowConf$maxVal),]
+
+
+
+clus1Order = c("SV.BCL6", "BCL10", "TNFAIP3", "UBE2A", "CD70", "B2M", "NOTCH2", "TMEM30A", "FAS",
+               "X5p.AMP", "SV.TP63", "ZEB2", "HLA.B", "SPEN", "SV.CD274.PDCD1LG2")
+clus3Order = c("TP53", "X17p.DEL", "X17p11.2.DEL", "X21q.AMP", "X9p21.3.DEL", "X9q21.13.DEL",
+               "X4q35.1.DEL","X1p31.1.DEL", "X1p36.11.DEL", "X1p13.1.DEL", "X4q21.22.DEL", "X14q32.31.DEL",
+               "X3p21.31.DEL", "X2p16.1.AMP", "X16q12.1.DEL", "X1p36.32.DEL", "X3q28.DEL", "X1q23.3.AMP" ,
+               "X18q23.DEL", "X8q24.22.AMP", "X17q24.3.AMP", "X13q14.2.DEL", "X19p13.3.DEL", "X5q.AMP",
+               "X11q.AMP", "X13q31.3.AMP", "X6p.AMP", "X2q22.2.DEL", "X12p13.2.DEL", "X6q.DEL",
+               "X3q28.AMP", "X11q23.3.AMP", "X1q42.12.DEL", "X8q12.1.DEL", "X19q13.32.DEL", "X10q23.31.DEL")
+
+clus2Order = c("BCL2", "SV.BCL2", "CREBBP", "EZH2", "KMT2D", "TNFRSF14", "HVCN1", "IRF8", "GNA13", "MEF2B",
+               "PTEN")
+
+clus5Order = c("SGK1", "HIST1H1E", "NFKBIE","BRAF", "CD83", "NFKBIA", "CD58", "HIST1H2BC", "STAT3",
+               "HIST1H1C", "ZFP36L1", "KLHL6", "HIST1H1D", "HIST1H1B", "ETS1", "TOX", "HIST1H2AM",
+               "HIST1H2BK", "RHOA", "ACTB", "LTB", "SF3B1", "CARD11", "HIST1H2AC")
+
+clus4Order = c("X18q.AMP", "X13q.AMP", "CD79B", "X3p.AMP", "MYD88", "ETV6", "X18p.AMP", "PIM1", 
+               "X17q25.1.DEL", "TBL1XR1", "X19q13.42.AMP", "GRHPR", "ZC3H12A", "X19p13.2.DEL",
+               "X19q.AMP", "HLA.A", "PRDM1", "BTG1", "X18q21.33.BCL2..AMP", "SV.MYC")
+featureOrder = toupper(c(clus1Order, clus2Order, clus3Order, clus4Order, clus5Order))
+
+netHeatmapDF = fullDFTrash[rownames(highConf),rev(featureOrder)]
+heatmapDFMatrix = as.matrix(netHeatmapDF)
+
+melted = melt(heatmapDFMatrix)
+c1 = which(highConf$cluster == 1)[1]
+c2 = which(highConf$cluster == 2)[1]
+c3 = which(highConf$cluster == 3)[1]
+c4 = which(highConf$cluster == 4)[1]
+c5 = which(highConf$cluster == 5)[1]
+# 
+b1 = rownames(netHeatmapDF)[c1]
+b2 = rownames(netHeatmapDF)[c2]
+b3 = rownames(netHeatmapDF)[c3]
+b4 = rownames(netHeatmapDF)[c4]
+b5 = rownames(netHeatmapDF)[c5]
+
+y1 = length(featureOrder)-length(clus1Order)
+y2 = y1-length(clus2Order)
+y3 = y2-length(clus3Order)
+y4 = y3-length(clus4Order)
+title = paste("NN High Confidence >.85, Total Count: ",nrow(highConf), ", Features ",nFeatures,sep="")
+p1 = ggplot(data = melted, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(colour = "white") + scale_fill_gradient(low = "white", high = "steelblue") +
+  scale_x_discrete(expand=c(0,0), breaks=c(b1,b2,b3,b4,b5)
+                   , labels = c("C1", "C2", "C3", "C4", "C5")) +
+  geom_vline(xintercept=c(c2,c3,c4,c5), linetype="solid") +
+  geom_hline(yintercept=c(y1,y2,y3,y4), linetype = "solid") +
+  ggtitle(title) +
+  theme(plot.title = element_text(hjust = 0.5),
+        title = element_text(size=20))
+
+fn = paste("Plots/TrashHeatmapNN_HC_",nFeatures,"F.jpeg", sep="")
+jpeg(fn, width = 1080, height = 720)
+print(p1)
+dev.off()
+
+netHeatmapDF = fullDFTrash[rownames(lowConf),rev(featureOrder)]
+heatmapDFMatrix = as.matrix(netHeatmapDF)
+
+melted = melt(heatmapDFMatrix)
+c1 = which(lowConf$cluster == 1)[1]
+c2 = which(lowConf$cluster == 2)[1]
+c3 = which(lowConf$cluster == 3)[1]
+c4 = which(lowConf$cluster == 4)[1]
+c5 = which(lowConf$cluster == 5)[1]
+# 
+b1 = rownames(netHeatmapDF)[c1]
+b2 = rownames(netHeatmapDF)[c2]
+b3 = rownames(netHeatmapDF)[c3]
+b4 = rownames(netHeatmapDF)[c4]
+b5 = rownames(netHeatmapDF)[c5]
+
+y1 = length(featureOrder)-length(clus1Order)
+y2 = y1-length(clus2Order)
+y3 = y2-length(clus3Order)
+y4 = y3-length(clus4Order)
+title = paste("NN Low Confidence <.40, Total Count: ",nrow(lowConf),", Features",nFeatures,sep="")
+p1 = ggplot(data = melted, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(colour = "white") + scale_fill_gradient(low = "white", high = "steelblue") +
+  scale_x_discrete(expand=c(0,0), breaks=c(b1,b2,b3,b4,b5)
+                   , labels = c("C1", "C2", "C3", "C4", "C5")) +
+  geom_vline(xintercept=c(c2,c3,c4,c5), linetype="solid") +
+  geom_hline(yintercept=c(y1,y2,y3,y4), linetype = "solid") +
+  ggtitle(title) +
+  theme(plot.title = element_text(hjust = 0.5),
+        title = element_text(size=20))
+
+fn = paste("Plots/TrashHeatmapNN_LC_",nFeatures,"F.jpeg", sep="")
+jpeg(fn, width = 1080, height = 720)
+print(p1)
+dev.off()
+
+title = paste("Confidence in AverageNN: Trash Set, Features: ",nFeatures, sep="")
+p = ggplot(avgMat, aes(x=maxVal)) +
+  geom_histogram(fill="black", alpha=1, position="identity", bins = 100) +
+  ggtitle(title) +
+  theme(plot.title = element_text(hjust = 0.5),
+        title = element_text(size=20)) +
+  scale_x_continuous(limits = c(0,1), breaks = seq(0,1,by=.1)) +
+  theme(axis.text.x = element_text(colour="grey20",size=20,angle=0,hjust=.5,vjust=.5,face="plain"),
+        axis.text.y = element_text(colour="grey20",size=25,angle=0,vjust=0,face="plain"),  
+        axis.title.x = element_text(colour="grey20",size=25,angle=0,hjust=.5,vjust=0,face="plain"),
+        axis.title.y = element_text(colour="grey20",size=25,angle=90,hjust=.5,vjust=.5,face="plain"))
+fn = "Plots/AverageNN_TrashSet_Confidences"
+if(useReduced){
+  fn = paste(fn, "_21F.jpeg",sep="")
+} else {
+  fn = paste(fn, "_161F.jpeg",sep="")
+}
+jpeg(fn, width = 1080, height = 720)
+print(p)
+dev.off()
