@@ -1,6 +1,7 @@
+mirror = 'http://cran.mirrors.hoobly.com/'
 install.packages('doMC',repos='http://R-Forge.R-project.org')
-install.packages('Cairo',repos='http://mirrors.sorengard.com/cran/')
-install.packages('gtools',repos='http://mirrors.sorengard.com/cran/')
-install.packages('gdata',repos='http://mirrors.sorengard.com/cran/')
-install.packages('caTools',repos='http://mirrors.sorengard.com/cran/')
-install.packages('gplots',repos='http://mirrors.sorengard.com/cran/')
+install.packages('Cairo',repos=mirror)
+install.packages('gtools',repos=mirror)
+install.packages('gdata',repos=mirror)
+install.packages('caTools',repos=mirror)
+install.packages('gplots',repos=mirror)
