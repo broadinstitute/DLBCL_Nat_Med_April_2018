@@ -1,3 +1,0 @@
-ensemblePredictions = function(rfList){
-  
-}
